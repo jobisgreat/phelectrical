@@ -67,7 +67,7 @@ CHART_KEPT = [
     "Small text or photo changes (about an hour a month).",
     "New projects added to the Projects page when you send the photos.",
     "Daily automatic test that the request-for-quote form still reaches you, with an alert to us if it fails.",
-    "Keyword and wording updates every month. We check what clients are searching for after each AI Scan and adjust titles, descriptions, and copy to match.",
+    "Keyword and wording updates every month. AI scans never stop, so we check what clients are searching for and adjust titles, descriptions, and copy to match.",
 ]
 
 BUILD_SCOPE = [
@@ -263,7 +263,8 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .seotitle{font-family:var(--display);font-weight:800;font-size:23px;color:#f0b13c;margin:0}
 .seokey{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
 .seokey li{display:flex;align-items:center;gap:8px}
-.seokey i{display:inline-block;width:24px} .seokey .k1{height:5px;background:#f0b13c;border-radius:3px} .seokey .k2{border-top:3px dashed #93a8b8}
+.seokey i{display:inline-block;width:24px} .seokey .k1{height:5px;background:#f0b13c;border-radius:3px} .seokey .k2{border-top:3px dashed #93a8b8} .seokey .k3{width:10px;height:10px;background:#f0b13c;transform:rotate(45deg);margin:0 7px}
+.seoplot .beam text{font-weight:600;font-size:11px;fill:#f0b13c}
 .seoplot{position:relative;margin-top:14px;padding-left:40px}
 .seoplot svg{width:100%;height:auto;display:block}
 .seoplot .grid{stroke:currentColor;stroke-opacity:.12} .seoplot .axis{stroke:currentColor;stroke-opacity:.4}
@@ -278,13 +279,9 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .seoplot .br{stroke:#f0b13c;stroke-width:2} .seoplot .gapt{font-weight:700;font-size:12px;fill:#f0b13c}
 @media(max-width:640px){.seoplot .endl{font-size:17px} .seoplot #seoLB0{transform:translateY(-16px)} .seoplot .upd text{display:none} .xlabs .mid{display:none} .seoplot{padding-left:0} .ylab{display:none}}
 .seoplot .mo{font:600 30px var(--display);fill:#f2f5f7;fill-opacity:.16}
-.seoplot .chip{transition:opacity .25s} .seoplot .chip text{font-weight:600;font-size:11px}
-.seoplot .chip.b rect{fill:#f0b13c} .seoplot .chip.b text{fill:var(--ink)}
-.seoplot .chip.a rect{fill:#1c2a36;stroke:#93a8b8} .seoplot .chip.a text{fill:#dbe4ea}
-.seoplot .rip{fill:none;stroke:#f0b13c;stroke-width:2}
 .replay{margin-left:auto;background:transparent;border:1px solid rgba(242,245,247,.35);color:#f2f5f7;border-radius:0;padding:4px 12px;font-weight:500;font-size:13px;cursor:pointer}
 .replay:hover{background:rgba(255,255,255,.08)}
-@media(max-width:640px){.seoplot .chip{display:none} .seoplot .mo{font-size:44px}}
+@media(max-width:640px){.seoplot .beam text{display:none} .seoplot .mo{font-size:44px}}
 .seoplot .xhair{stroke:#f2f5f7;stroke-opacity:.5;stroke-width:1}
 .seoplot svg{cursor:crosshair;touch-action:pan-y}
 @media (prefers-reduced-motion:reduce){.seoplot .pulse{animation:none;opacity:0}}
@@ -346,9 +343,9 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 SEO_CHART = """
         <div class="seochart" id="seochart">
           <div class="seohead"><p class="seotitle">Two sites, twelve months later</p><button type="button" class="replay" id="seoReplay" aria-label="Replay the chart">↻ Replay</button>
-            <ul class="seokey"><li><i class="k1"></i>Kept current every month</li><li><i class="k2"></i>Built and left alone</li></ul></div>
+            <ul class="seokey"><li><i class="k1"></i>Kept current every month</li><li><i class="k2"></i>Built and left alone</li><li><i class="k3"></i>AI scans, nonstop</li></ul></div>
           <div class="seoplot" id="seoplot"><span class="ylab top">More</span><span class="ylab bot">Less</span>
-            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides lower after each AI Scan, and the inbound leads gained between them grow.">
+            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides a little lower every month as AI keeps scanning, and the inbound leads gained between them grow.">
               <defs>
                 <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0b13c" stop-opacity=".45"/><stop offset="1" stop-color="#f0b13c" stop-opacity="0"/></linearGradient>
                 <pattern id="gGap" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f0b13c" fill-opacity=".08"/><line x1="0" y1="0" x2="0" y2="8" stroke="#f0b13c" stroke-opacity=".28" stroke-width="2"/></pattern>
@@ -356,6 +353,7 @@ SEO_CHART = """
               </defs>
               <line x1="4" x2="540" y1="200" y2="200" class="grid"/><line x1="4" x2="540" y1="140" y2="140" class="grid"/><line x1="4" x2="540" y1="80" y2="80" class="grid"/>
               <g id="seoUpd"></g>
+              <g id="seoBeam" class="beam" aria-hidden="true"><defs><linearGradient id="gBeam" x1="0" x2="1"><stop offset="0" stop-color="#f0b13c" stop-opacity="0"/><stop offset="1" stop-color="#f0b13c" stop-opacity=".35"/></linearGradient></defs><rect id="seoBeamR" x="-30" y="22" width="30" height="230" fill="url(#gBeam)"/><line id="seoBeamL" x1="0" x2="0" y1="22" y2="252" stroke="#f0b13c" stroke-opacity=".8" stroke-width="1.5"/><text id="seoBeamT" x="8" y="17">AI scanning</text></g>
               <path id="seoArea" fill="url(#gArea)" d=""/>
               <path id="seoGap" fill="url(#gGap)" d=""/>
               <line x1="4" x2="540" y1="252" y2="252" class="axis"/><line x1="4" x2="4" y1="12" y2="252" class="axis"/>
@@ -365,17 +363,15 @@ SEO_CHART = """
               <g id="seoGapLab"><line id="seoBr" class="br"/><text id="seoGapT" class="gapt" dominant-baseline="middle"><tspan dy="-0.6em">Inbound</tspan><tspan dy="1.2em">Leads</tspan></text></g>
               <circle id="seoDA" r="6" class="dotA"/>
               <circle id="seoPulse" r="9" class="pulse"/><circle id="seoDB" r="8" class="dotB"/>
-              <text id="seoLB0" class="endl b" x="12" y="144">Site That Climbs</text><text id="seoLB" class="endl b">Site That Climbs</text><text id="seoLA" class="endl a">Left alone</text>
+              <text id="seoLB0" class="endl b" x="12" y="144">Site That Climbs</text><text id="seoLB" class="endl b">Site That Climbs</text><text id="seoLA" class="endl a">Falling</text>
               <text id="seoMo" class="mo" x="22" y="48">Launch</text>
-                  <g id="seoChipA" class="chip a" opacity="0"><rect height="22" width="108"/><text x="10" y="15">✕ Falls Behind</text></g>
-              <circle id="seoRip" class="rip" r="10" opacity="0"/>
               <line id="seoX" class="xhair" y1="12" y2="252" opacity="0"/>
             </svg>
             <div class="xlabs" aria-hidden="true"><span style="left:0.6%">Launch</span><span class="mid" style="left:21.6%;transform:translateX(-50%)">3 mo</span><span style="left:42.5%;transform:translateX(-50%)">6 mo</span><span class="mid" style="left:63.4%;transform:translateX(-50%)">9 mo</span><span style="left:84.4%;transform:translateX(-50%)">12 mo</span></div>
             <p class="seocap">How easily nearby buyers find you (illustration). Hover or tap to step through the year.</p>
           </div>
-          <div class="seonow"><p class="b"><b id="seoM1">Month 12</b> · Kept current: <span id="seoT1">12 monthly rounds so far. Each AI Scan is met with updates that keep the site current.</span></p><p class="a"><b id="seoM2">Month 12</b> · Left alone: <span id="seoT2">No changes since launch. Three AI Scans have passed with no response.</span></p></div>
-          <p class="seonote">Illustration of the usual pattern, not a forecast. No real numbers on the chart. AI Scan markers show the timing of change, not exact dates.</p>
+          <div class="seonow"><p class="b"><b id="seoM1">Month 12</b> · Kept current: <span id="seoT1">12 monthly rounds so far, keeping up with AI scans that never stop.</span></p><p class="a"><b id="seoM2">Month 12</b> · Left alone: <span id="seoT2">No changes since launch. AI keeps scanning, so it slips a little more every month.</span></p></div>
+          <p class="seonote">Illustration of the usual pattern, not a forecast. No real numbers on the chart. AI scans run all the time; the marks show the pattern, not exact dates.</p>
           <p class="seonote more">Your real numbers come from the before-and-after check, starting from the baseline we save before the build.</p>
         </div>
 """
@@ -383,7 +379,8 @@ SEO_CHART = """
 SEO_JS = """
     // SEO chart (from the DeVellis Zrein proposal, 27 Oct 2026): draws on a loop while on screen; hover or tap to scrub; holds still for reduced motion.
     (function () {
-      var A = [30, 30, 29, 23, 21.5, 20, 13, 11.5, 10, 4, 2.5, 1, 0], B = [30, 33, 36, 40, 44, 47, 51, 55, 58, 62, 66, 69, 73], N = 12, UPD = [3, 6, 9];
+      // AI scans never stop (Tim, 28 Oct 2026): a mark every month, a scanning beam that rides the front of the gold line, and the left-alone line slips every month.
+      var A = [30, 28.5, 26.5, 24, 21.5, 19, 16.5, 14, 11.5, 9, 6, 3, 0], B = [30, 33, 36, 40, 44, 47, 51, 55, 58, 62, 66, 69, 73], N = 12, UPD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
       var box = document.getElementById("seochart"); if (!box) return;
       var svg = box.querySelector("svg"), $ = function (id) { return document.getElementById(id); };
       function x(m) { return 4 + (m / N) * 536; } function y(v) { return 252 - (v / 100) * 240; }
@@ -400,7 +397,7 @@ SEO_JS = """
       }
       var ns = "http://www.w3.org/2000/svg", ug = $("seoUpd"), marks = UPD.map(function (m) {
         var g = document.createElementNS(ns, "g"); g.setAttribute("class", "upd");
-        g.innerHTML = '<line x1="' + x(m) + '" x2="' + x(m) + '" y1="22" y2="252"/><path d="M' + x(m) + ' 8l5 5-5 5-5-5z"/><text x="' + (x(m) + 8) + '" y="17">AI Scan</text>';
+        g.innerHTML = '<line x1="' + x(m) + '" x2="' + x(m) + '" y1="22" y2="252"/><path d="M' + x(m) + ' 9l4 4-4 4-4-4z"/>';
         ug.appendChild(g); return g;
       });
       var phone = window.matchMedia("(max-width:640px)");
@@ -415,14 +412,14 @@ SEO_JS = """
         lb.setAttribute("x", right ? xt - 12 : xt + 12); lb.setAttribute("y", yb - 14); lb.setAttribute("text-anchor", right ? "end" : "start");
         la.setAttribute("x", right ? xt - 12 : xt + 12); la.setAttribute("y", ya > 225 ? ya - 12 : ya + 24); la.setAttribute("text-anchor", right ? "end" : "start");
         marks.forEach(function (g, i) { g.style.opacity = t >= UPD[i] - 0.3 ? 1 : 0; });
-        // The moment of an AI Scan: a ripple on the marker, and what happens to each site.
-        var hot = UPD.filter(function (u) { return t >= u && t - u < 1.3; })[0], cA = $("seoChipA"), rp = $("seoRip");
-        if (hot !== undefined && t < N) {
-          var k = (t - hot) / 1.3, cx = Math.min(xt + 14, 640 - 136);
-          cA.setAttribute("transform", "translate(" + cx + "," + Math.min(ya + 34, 226) + ")"); cA.setAttribute("opacity", 1);
-          rp.setAttribute("cx", x(hot)); rp.setAttribute("cy", 13); rp.setAttribute("r", 6 + k * 22); rp.setAttribute("opacity", 1 - k);
-        } else { cA.setAttribute("opacity", 0); rp.setAttribute("opacity", 0); }
-        $("seoLA").style.opacity = hot !== undefined && t < N ? 0 : 1;
+        // The "AI scanning" beam rides the front of the gold line and climbs with it (Tim, 28 Oct 2026).
+        var by = yb + 9;
+        $("seoBeam").setAttribute("transform", "translate(" + xt + ",0)");
+        $("seoBeamR").setAttribute("y", by); $("seoBeamR").setAttribute("height", Math.max(0, 252 - by));
+        $("seoBeamL").setAttribute("y1", by);
+        // The label sits just right of the beam and above the line, clear of the "Site That Climbs" label at the start.
+        $("seoBeamT").setAttribute("y", Math.min(yb - 30, 118));
+        // "Falling" rides the dashed line the whole way, with no flashing tags (Tim, 28 Oct 2026).
         $("seoLB").style.opacity = t >= N - 0.05 ? 1 : 0; // the end label fades in when the line arrives
         // "Inbound Leads" rides the line ends and grows from small to big as the gap opens (Tim, 27 Oct 2026).
         var br = $("seoBr"); br.setAttribute("x1", xt + 16); br.setAttribute("x2", xt + 16); br.setAttribute("y1", yb + 6); br.setAttribute("y2", Math.max(ya - 6, yb + 6));
@@ -434,9 +431,8 @@ SEO_JS = """
         if (len > room) gt.style.fontSize = gsz * room / len + "px";
         $("seoMo").textContent = t < 0.5 ? "Launch" : "Month " + Math.round(t);
         var mo = Math.round(t), lab = mo === 0 ? "Launch day" : "Month " + mo; $("seoM1").textContent = lab; $("seoM2").textContent = lab;
-        var hit = UPD.filter(function (u) { return u <= mo; }).length, words = ["", "One", "Two", "Three"];
-        $("seoT1").textContent = mo === 0 ? "the site goes live and the monthly work starts." : mo + " monthly round" + (mo > 1 ? "s" : "") + " so far." + (hit ? " Each AI Scan is met with updates that keep the site current." : "");
-        $("seoT2").textContent = mo === 0 ? "the site goes live and the builder moves on." : hit ? "No changes since launch. " + words[hit] + " AI Scan" + (hit > 1 ? "s have" : " has") + " passed with no response." : "No changes since launch.";
+        $("seoT1").textContent = mo === 0 ? "the site goes live and the monthly work starts." : mo + " monthly round" + (mo > 1 ? "s" : "") + " so far, keeping up with AI scans that never stop.";
+        $("seoT2").textContent = mo === 0 ? "the site goes live and the builder moves on." : "No changes since launch. AI keeps scanning, so it slips a little more every month.";
       }
       draw(N);
       var reduce = !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -605,7 +601,7 @@ def proposal():
         <div class="two" style="margin-top:28px">
           <div class="box"><h3>Built and left alone</h3><ul>
             <li><span aria-hidden="true">✕ </span>Finished on launch day and never touched again.</li>
-            <li><span aria-hidden="true">✕ </span>AI Scans change how sites rank. This one does not change with them.</li>
+            <li><span aria-hidden="true">✕ </span>AI scans never stop, and they change how sites rank. This one does not change with them.</li>
             <li><span aria-hidden="true">✕ </span>New jobs finish. The Projects page still shows last year’s work.</li>
             <li><span aria-hidden="true">✕ </span>No one checks that quote requests still arrive.</li>
             <li><span aria-hidden="true">✕ </span>No one watches if the site goes down or the security certificate expires.</li>
