@@ -9,7 +9,7 @@
     --line-faint: rgba(140, 160, 230, 0.07);
     --text: #f2f5f8;
     --text-dim: #a9b7c6;
-    --accent: #c7983e;      /* sign gold */
+    --accent: #b5893a;      /* deep metallic gold (Tim: gold, not yellow) */
     --accent-ink: #0f1630;
     --u: 8px;               /* 8px grid unit */
     --gutter: calc(var(--u) * 2);
@@ -48,7 +48,7 @@
     border: 2px solid var(--accent); border-radius: 0; cursor: pointer;
   }
   .btn-primary { background: var(--accent); color: var(--accent-ink); }
-  .btn-primary:hover { background: #d6aa55; border-color: #d6aa55; }
+  .btn-primary:hover { background: #c4994a; border-color: #c4994a; }
   .btn-ghost { background: transparent; color: var(--text); border-color: var(--text-dim); }
   .btn-ghost:hover { border-color: var(--text); }
 
