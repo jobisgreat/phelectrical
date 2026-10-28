@@ -1,12 +1,16 @@
   :root {
-    --base: #0b1622;        /* deep navy */
-    --base-2: #111f2e;      /* raised panels */
-    --line: #1f3347;        /* blueprint rules */
-    --line-faint: rgba(120, 170, 220, 0.07);
+    --base: #0f1630;        /* sign navy, deepened */
+    --base-2: #18224a;      /* raised panels */
+    --navy: #131b39;        /* sign navy (letter rims) */
+    --rim: #9fb8d8;         /* sign pale-blue hairline */
+    --black: #0a0a0c;       /* sign black (P fill) */
+    --red: #a3262c;         /* sign flag red, accents only */
+    --line: #2a3563;        /* blueprint rules */
+    --line-faint: rgba(140, 160, 230, 0.07);
     --text: #f2f5f8;
     --text-dim: #a9b7c6;
-    --accent: #c9a64a;      /* logo gold */
-    --accent-ink: #0b1622;
+    --accent: #c7983e;      /* sign gold */
+    --accent-ink: #0f1630;
     --u: 8px;               /* 8px grid unit */
     --gutter: calc(var(--u) * 2);
     --max: 1200px;
@@ -44,18 +48,28 @@
     border: 2px solid var(--accent); border-radius: 0; cursor: pointer;
   }
   .btn-primary { background: var(--accent); color: var(--accent-ink); }
-  .btn-primary:hover { background: #dcbc62; border-color: #dcbc62; }
+  .btn-primary:hover { background: #d6aa55; border-color: #d6aa55; }
   .btn-ghost { background: transparent; color: var(--text); border-color: var(--text-dim); }
   .btn-ghost:hover { border-color: var(--text); }
 
   /* Header + persistent trust bar */
-  .site-head { position: sticky; top: 0; z-index: 50; background: rgba(11, 22, 34, 0.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+  .site-head { position: sticky; top: 0; z-index: 50; background: rgba(15, 22, 48, 0.96); border-bottom: 3px solid var(--accent); box-shadow: 0 3px 0 var(--red); backdrop-filter: blur(6px); }
   .head-row { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--u) * 2); min-height: calc(var(--u) * 8); }
   .brand { text-decoration: none; display: flex; flex-direction: column; }
-  .brand-mark { display: flex; align-items: baseline; gap: 6px; color: var(--accent); line-height: 1; }
-  .brand-ph { font: 900 1.75rem/1 var(--head); letter-spacing: -0.02em; }
-  .brand-word { font: 400 1.125rem/1 var(--wordmark); letter-spacing: 0.06em; }
-  .brand-sub { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+  .brand-mark { display: flex; align-items: baseline; gap: 10px; color: var(--accent); line-height: 1; isolation: isolate; padding: 4px 0 2px 4px; }
+  .brand-ph { font: 900 2.125rem/1 var(--head); letter-spacing: 0.02em; display: inline-flex; gap: 3px; }
+  /* Letters drawn like the truck sign: fill, inner rim, outer navy rim, pale hairline (layers behind via data-t) */
+  .lt, .brand-word { position: relative; display: inline-block; paint-order: stroke fill; }
+  .lt::before, .lt::after, .brand-word::before { content: attr(data-t); position: absolute; left: 0; top: 0; paint-order: stroke fill; color: var(--navy); }
+  .lt::before, .brand-word::before { z-index: -2; -webkit-text-stroke: 9px var(--rim); }
+  .lt::after { z-index: -1; -webkit-text-stroke: 7px var(--navy); }
+  .lt-p { color: var(--black); -webkit-text-stroke: 3px var(--accent); }
+  .lt-h { color: var(--accent); -webkit-text-stroke: 2px var(--navy); }
+  .lt-h::before { -webkit-text-stroke: 6px var(--rim); }
+  .lt-h::after { -webkit-text-stroke: 4px var(--navy); }
+  .brand-word { font: 400 1.25rem/1 var(--wordmark); letter-spacing: 0.14em; color: var(--accent); -webkit-text-stroke: 1.5px var(--black); }
+  .brand-word::before { -webkit-text-stroke: 3.5px var(--rim); }
+  .brand-sub { font-size: 0.75rem; color: var(--text-dim); margin-top: 4px; }
   .head-call { display: none; }
   .trust { border-top: 1px solid var(--line); background: var(--base-2); }
   .trust ul { list-style: none; margin: 0; padding: var(--u) 0; display: flex; flex-wrap: wrap; gap: var(--u) calc(var(--u) * 3); font-size: 0.8125rem; font-weight: 600; }
@@ -94,7 +108,7 @@
   /* Concept-preview banner and AI photo label */
   .concept-banner { background: #ffe14d; color: #111; font: 600 0.8125rem/1.3 var(--body); text-align: center; padding: var(--u) var(--gutter); }
   .hero-figure { position: relative; }
-  .photo-tag { position: absolute; right: var(--u); bottom: var(--u); background: rgba(11, 22, 34, 0.85); color: var(--text); font: 600 0.75rem/1 var(--body); padding: 6px var(--u); }
+  .photo-tag { position: absolute; right: var(--u); bottom: var(--u); background: rgba(15, 22, 48, 0.85); color: var(--text); font: 600 0.75rem/1 var(--body); padding: 6px var(--u); }
 
   /* Homepage hero: text band above an uncropped team photo */
   .hero-photo { display: flex; flex-direction: column; padding: 0 0 calc(var(--u) * 4); }
@@ -136,7 +150,7 @@
   input, textarea {
     width: 100%; min-height: calc(var(--u) * 6); padding: var(--u) calc(var(--u) * 2);
     font: 400 1rem/1.5 var(--body); color: var(--text);
-    background: var(--base); border: 1px solid #36506a; border-radius: 0;
+    background: var(--base); border: 1px solid #3a4a80; border-radius: 0;
   }
   textarea { min-height: calc(var(--u) * 15); resize: vertical; }
   input:focus, textarea:focus { border-color: var(--accent); outline: none; }
