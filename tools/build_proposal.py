@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # ---- Fill these in before the proposal goes to PH Electric. None shows a yellow "to confirm" mark. ----
 SITE = os.environ.get("PH_SITE", "")  # the site is served from this same project, so links stay relative
 PROPOSAL_HOST = "phelectrical-jobisgreat-3165s-projects.vercel.app"  # this project's Vercel address
-DEPOSIT_LINK = None   # Stripe payment link for the $4,250 deposit (from Tim)
+DEPOSIT_LINK = "https://buy.stripe.com/7sY6oH7oPbyY5jDahr3Nm0k"   # Stripe payment link for the $4,250 deposit (from Tim, 28 Oct 2026)
 LEGAL_NAME = "Piquette & Howard Electric Service, LLC"  # from Tim, 28 Oct 2026
 SIGNER = "R. Bruce Howard, President, or another authorized officer"  # Tim, 28 Oct 2026: signer left open
 LAUNCH = None         # launch promise (from Tim), e.g. "Within 14 days of receiving your deposit"
