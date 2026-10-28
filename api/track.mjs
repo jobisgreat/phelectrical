@@ -71,12 +71,13 @@ async function handle(request) {
   const key = process.env.RESEND_API_KEY;
   const from = process.env.ALERT_FROM;
   if (key && from) {
-    await fetch("https://api.resend.com/emails", {
+    const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({ from, to: [ALERT_TO], subject, text }),
     }).catch((e) => console.error("[proposal-track] email failed", e));
-  }
+    if (r && !r.ok) console.error("[proposal-track] email failed", r.status, await r.text().catch(() => ""));
+  } else console.error("[proposal-track] email skipped: RESEND_API_KEY or ALERT_FROM missing");
   return new Response(null, { status: 204 });
 }
 
