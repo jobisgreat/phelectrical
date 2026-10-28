@@ -57,7 +57,7 @@ MONTHLY_SCOPE = [
     "Hosting, plus security and uptime monitoring, with fixes when something changes.",
     "Small text or photo changes, up to about an hour a month.",
     "New projects added to your Projects page when you send the photos.",
-    "A check every month that your request-for-quote form still reaches you.",
+    "An automatic test every day that your request-for-quote form still reaches you, with an alert to us if it fails.",
     "Keyword updates every month: we check what clients search for and what changed in Google's latest updates, then adjust your page titles, descriptions and wording to match.",
 ]
 
@@ -66,7 +66,7 @@ CHART_KEPT = [
     "Hosting, security, and uptime monitoring. Fixes when something breaks.",
     "Small text or photo changes (about an hour a month).",
     "New projects added to the Projects page when you send the photos.",
-    "Monthly check that the request-for-quote form still reaches you.",
+    "Daily automatic test that the request-for-quote form still reaches you, with an alert to us if it fails.",
     "Keyword and wording updates every month. We check what clients are searching for after each AI Scan and adjust titles, descriptions, and copy to match.",
 ]
 
