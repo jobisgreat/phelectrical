@@ -587,7 +587,7 @@ def proposal():
         <ul class="sys">
           <li><b>Found.</b>General contractors, facility managers, and agencies searching for a commercial electrical contractor land on PH Electric. Your Google listing is cleaned and accurate, and each of your seven capabilities and four markets has its own page written with the title, description, and business details those buyers and AI search systems look for when they need that specific work.</li>
           <li><b>Shown.</b>{html.escape(PAGE_LIST)}.</li>
-          <li><b>Contacted.</b>When a general contractor or facility manager is ready to talk, they can reach you from any page. On a phone, one tap calls 603-382-3182. The request-for-quote form on all 18 pages asks for their name, company, project scope and location, and lets them attach drawings, specifications or bid documents (PDF, DWG, Office files, images or ZIP). The request lands in your inbox with what you need to review the job and price it, and we check every month that those requests still reach you.</li>
+          <li><b>Contacted.</b>When a general contractor or facility manager is ready to talk, they can reach you from any page. On a phone, one tap calls 603-382-3182. The request-for-quote form on all 18 pages asks for their name, company, project scope and location, and lets them attach drawings, specifications or bid documents (PDF, DWG, Office files, images or ZIP). The request lands in your inbox with what you need to review the job and price it.</li>
         </ul>
         <div class="keep"><p>Every month we keep it working:</p><ul>
 {ul(MONTHLY_SCOPE)}
