@@ -240,3 +240,9 @@
   .checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--u); }
   .checklist li { display: flex; gap: calc(var(--u) * 2); align-items: baseline; padding: calc(var(--u) * 1.5) calc(var(--u) * 2); background: var(--base-2); border-left: 4px solid var(--accent); }
   @media (min-width: 640px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
+
+/* Project detail lines and photo slots (to confirm with owner) */
+.proj-scope { margin: 8px 0 0; }
+.proj-meta { margin: 4px 0 0; font-size: 0.9375rem; color: var(--rim); }
+.photo-slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; max-width: 480px; margin: 16px 0 0; border: 2px dashed #ffe14d; background: rgba(255, 225, 77, 0.06); padding: 16px; text-align: center; }
+.projects .photo-slot { aspect-ratio: 16 / 9; max-width: none; }
