@@ -68,14 +68,14 @@ async function handle(request) {
 
   console.log(`[proposal-track] ${subject}\n${text}`);
 
-  const key = process.env.RESEND_API_KEY;
-  const from = process.env.ALERT_FROM;
+  const key = (process.env.RESEND_API_KEY || "").trim(); // the shared value has a stray line break
+  const from = (process.env.ALERT_FROM || "").trim();
   if (key && from) {
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({ from, to: [ALERT_TO], subject, text }),
-    }).catch((e) => console.error("[proposal-track] email failed", e));
+    }).catch((e) => console.error("[proposal-track] email failed", e && e.name));
     if (r && !r.ok) console.error("[proposal-track] email failed", r.status, await r.text().catch(() => ""));
   } else console.error("[proposal-track] email skipped: RESEND_API_KEY or ALERT_FROM missing");
   return new Response(null, { status: 204 });

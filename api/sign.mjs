@@ -7,7 +7,7 @@ const ALERT_TO = "tim@airocket.pro"; // Tim only, never the prospect
 
 // Signed alert (28 Oct 2026). Uses the same RESEND_API_KEY and ALERT_FROM shared variables as track.mjs.
 async function alertSigned(name, business, id, request) {
-  const key = process.env.RESEND_API_KEY, from = process.env.ALERT_FROM;
+  const key = (process.env.RESEND_API_KEY || "").trim(), from = (process.env.ALERT_FROM || "").trim(); // the shared value has a stray line break
   if (!key || !from) return console.error("[proposal-sign] alert skipped: RESEND_API_KEY or ALERT_FROM missing");
   const link = `${new URL(request.url).origin}/agreement/?sig=${id}`;
   const when = new Date().toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" });
@@ -16,7 +16,7 @@ async function alertSigned(name, business, id, request) {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from, to: [ALERT_TO], subject: `${name} signed the PH Electric agreement`, text }),
-  }).catch((e) => console.error("[proposal-sign] alert failed", e));
+  }).catch((e) => console.error("[proposal-sign] alert failed", e && e.name));
   if (r && !r.ok) console.error("[proposal-sign] alert failed", r.status, await r.text());
 }
 
@@ -53,7 +53,7 @@ export async function POST(request) {
       p_domain: typeof b.domain === "string" && /^[a-z0-9.|\- ]{1,60}$/.test(b.domain) ? b.domain : null,
     });
     console.log(`[proposal-sign] ${SHOP} signed by ${name} for ${business} (${id})`);
-    await alertSigned(name, business, id, request).catch((e) => console.error("[proposal-sign] alert failed", e));
+    await alertSigned(name, business, id, request).catch((e) => console.error("[proposal-sign] alert failed", e && e.name));
     return json({ id });
   } catch (e) {
     console.error("[proposal-sign] save failed", e);
