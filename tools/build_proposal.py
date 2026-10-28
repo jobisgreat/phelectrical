@@ -585,7 +585,7 @@ def proposal():
         <div class="funnel"><h2>Anyone can build a pretty brochure website. We build the funnel system that turns visitors into clients.</h2></div>
         <p class="syshead">Your system, from search to phone call</p>
         <ul class="sys">
-          <li><b>Found.</b>Your Google listing checked and cleaned up, and each of your seven capabilities and four markets on its own page, with a title, description and business details Google reads.</li>
+          <li><b>Found.</b>Your Google listing is checked and cleaned so the core business details are accurate and complete. Each of your seven capabilities and four markets gets its own page, written with a clear title, description, and the specific business details buyers and search systems look for when they need that exact type of work. This structure makes it easier for project managers, procurement teams, and AI search tools to match your company to the right job instead of landing on a single generic page that tries to cover everything.</li>
           <li><b>Shown.</b>{html.escape(PAGE_LIST)}.</li>
           <li><b>Contacted.</b>One tap calls 603-382-3182 on a phone, and the request-for-quote form on every page lands in your inbox.</li>
         </ul>
