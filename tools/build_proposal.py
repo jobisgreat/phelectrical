@@ -15,8 +15,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = os.environ.get("PH_SITE", "")  # the site is served from this same project, so links stay relative
 PROPOSAL_HOST = "phelectrical-jobisgreat-3165s-projects.vercel.app"  # this project's Vercel address
 DEPOSIT_LINK = None   # Stripe payment link for the $4,250 deposit (from Tim)
-LEGAL_NAME = None     # exact legal entity on the Order Form (from Tim)
-SIGNER = None         # signer's full name (from Tim)
+LEGAL_NAME = "Piquette & Howard Electric Service, LLC"  # from Tim, 28 Oct 2026
+SIGNER = "R. Bruce Howard, President, or another authorized officer"  # Tim, 28 Oct 2026: signer left open
 LAUNCH = None         # launch promise (from Tim), e.g. "Within 14 days of receiving your deposit"
 FORGE_LINE = None     # Forge's one-line promise for the top of the page (from Tim)
 DOMAIN = None         # the domain PH Electric keeps: phelectricalcontractor.com or PHelectric.net (from Tim)
@@ -692,7 +692,7 @@ def proposal():
           <form class="signbox" id="signform" novalidate>
             <p><a class="agree" href="/agreement/" data-agree target="_blank" rel="noopener">Read the Website Service Agreement and your Order Form →</a></p>
             <label class="check"><input type="checkbox" id="agree"> <span>I have read and agree to the Website Service Agreement and my Order Form, and I agree to sign electronically.</span></label>
-            <label>Your full name<input type="text" id="signname" autocomplete="name" maxlength="120"{f' placeholder="{html.escape(SIGNER)}"' if SIGNER else ''}></label>
+            <label>Your full name<input type="text" id="signname" autocomplete="name" maxlength="120"></label>
             <label>Business name<input type="text" id="signbiz" autocomplete="organization" maxlength="160" value="{html.escape(LEGAL_NAME or 'PH Electric')}"></label>
             <button type="submit" class="btn main" id="signbtn" disabled>Sign the agreement</button>
             <p id="signmsg" role="status" aria-live="polite"></p>
