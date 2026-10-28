@@ -168,7 +168,9 @@
     body { padding-bottom: 0; }
     .call-bar { display: none; }
     .head-call { display: inline-flex; }
-    .hero { padding: calc(var(--u) * 12) 0 calc(var(--u) * 12); }
+    .hero:has(.hero-media) { padding: calc(var(--u) * 8) 0 calc(var(--u) * 6); min-height: calc(100vh - 104px); display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero:has(.hero-media) > .wrap { width: 100%; }
+    .hero:has(.hero-media) h1 { font-size: clamp(3rem, 4.6vw, 4.25rem); max-width: 20ch; }
     .hero-media::after { background: linear-gradient(90deg, rgba(11, 22, 34, 0.82) 0%, rgba(11, 22, 34, 0.50) 42%, rgba(11, 22, 34, 0) 100%), linear-gradient(180deg, transparent 92%, var(--base) 100%); }
     section { padding: calc(var(--u) * 12) 0; }
     .caps { grid-template-columns: repeat(3, 1fr); }
