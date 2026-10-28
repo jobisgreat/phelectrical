@@ -124,7 +124,7 @@
   .points { display: grid; gap: calc(var(--u) * 3); }
   .safety-grid { display: grid; gap: calc(var(--u) * 3); }
   .award { border-left: 4px solid var(--accent); padding: calc(var(--u) * 2) calc(var(--u) * 3); background: var(--base-2); }
-  .award h3 { font-size: 1.5rem; }
+  .award h3 { font-size: clamp(1.125rem, 5.4vw, 1.5rem); }
   .award p { margin-top: var(--u); color: var(--text-dim); }
 
   /* Portfolio */
@@ -157,7 +157,7 @@
   .form-status { min-height: calc(var(--u) * 3); color: var(--text-dim); font-size: 0.9375rem; }
 
   /* Placeholders to fill in later */
-  .todo { display: inline-block; background: #ffe14d; color: #111; font-weight: 600; padding: 2px var(--u); }
+  .todo { overflow-wrap: anywhere; display: inline-block; background: #ffe14d; color: #111; font-weight: 600; padding: 2px var(--u); }
   .call-block p.todo { color: #111; }
   p.todo, div.todo { display: block; margin-top: calc(var(--u) * 2); padding: var(--u) calc(var(--u) * 2); }
 
@@ -237,3 +237,6 @@
     .caps.three-up { grid-template-columns: repeat(3, 1fr); }
     .prequal { grid-template-columns: repeat(2, 1fr); }
   }
+  .checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--u); }
+  .checklist li { display: flex; gap: calc(var(--u) * 2); align-items: baseline; padding: calc(var(--u) * 1.5) calc(var(--u) * 2); background: var(--base-2); border-left: 4px solid var(--accent); }
+  @media (min-width: 640px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
