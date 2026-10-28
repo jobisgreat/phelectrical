@@ -53,7 +53,7 @@ export async function POST(request) {
       p_domain: typeof b.domain === "string" && /^[a-z0-9.|\- ]{1,60}$/.test(b.domain) ? b.domain : null,
     });
     console.log(`[proposal-sign] ${SHOP} signed by ${name} for ${business} (${id})`);
-    await alertSigned(name, business, id, request);
+    await alertSigned(name, business, id, request).catch((e) => console.error("[proposal-sign] alert failed", e));
     return json({ id });
   } catch (e) {
     console.error("[proposal-sign] save failed", e);
