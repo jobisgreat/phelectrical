@@ -354,7 +354,7 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
           <div class="seohead"><p class="seotitle">Two sites, twelve months later</p><button type="button" class="replay" id="seoReplay" aria-label="Replay the chart">↻ Replay</button>
             <ul class="seokey"><li><i class="k1"></i>Kept current every month</li><li><i class="k2"></i>Built and left alone</li></ul></div>
           <div class="seoplot" id="seoplot"><span class="ylab top">More</span><span class="ylab bot">Less</span>
-            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides lower after each AI Scan, and the revenue gained between them grows.">
+            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides lower after each AI Scan, and the inbound leads gained between them grow.">
               <defs>
                 <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0b13c" stop-opacity=".45"/><stop offset="1" stop-color="#f0b13c" stop-opacity="0"/></linearGradient>
                 <pattern id="gGap" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f0b13c" fill-opacity=".08"/><line x1="0" y1="0" x2="0" y2="8" stroke="#f0b13c" stroke-opacity=".28" stroke-width="2"/></pattern>
@@ -368,7 +368,7 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
               <path id="seoA" class="lineA" d=""/>
               <path id="seoBglow" class="lineB" d="" filter="url(#gGlow)" opacity=".7"/>
               <path id="seoB" class="lineB" d=""/>
-              <g id="seoGapLab"><line id="seoBr" class="br"/><text id="seoGapT" class="gapt" dominant-baseline="middle">Revenue $</text></g>
+              <g id="seoGapLab"><line id="seoBr" class="br"/><text id="seoGapT" class="gapt" dominant-baseline="middle"><tspan dy="-0.6em">Inbound</tspan><tspan dy="1.2em">Leads</tspan></text></g>
               <circle id="seoDA" r="6" class="dotA"/>
               <circle id="seoPulse" r="9" class="pulse"/><circle id="seoDB" r="8" class="dotB"/>
               <text id="seoLB0" class="endl b" x="12" y="144">Your Growth Engine</text><text id="seoLB" class="endl b">Your Growth Engine</text><text id="seoLA" class="endl a">Left alone</text>
@@ -650,11 +650,13 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
         } else { cA.setAttribute("opacity", 0); rp.setAttribute("opacity", 0); }
         $("seoLA").style.opacity = hot !== undefined && t < N ? 0 : 1;
         $("seoLB").style.opacity = t >= N - 0.05 ? 1 : 0; // the end label fades in when the line arrives
-        // "Revenue $" rides the line ends and grows from small to big as the gap opens (Tim, 27 Oct 2026).
+        // "Inbound Leads" rides the line ends and grows from small to big as the gap opens (Tim, 27 Oct 2026).
         var br = $("seoBr"); br.setAttribute("x1", xt + 16); br.setAttribute("x2", xt + 16); br.setAttribute("y1", yb + 6); br.setAttribute("y2", Math.max(ya - 6, yb + 6));
         var gt = $("seoGapT"), gsz = (7 + 13 * t / N) * (phone.matches ? 1.4 : 1);
         gt.setAttribute("x", xt + 22); gt.setAttribute("y", (ya + yb) / 2); gt.style.fontSize = gsz + "px";
-        var room = 636 - (xt + 22), len = gt.getComputedTextLength();
+        var tsp = gt.querySelectorAll("tspan"), len = 0; // two lines: "Inbound" over "Leads"
+        for (var i = 0; i < tsp.length; i++) { tsp[i].setAttribute("x", xt + 22); len = Math.max(len, tsp[i].getComputedTextLength()); }
+        var room = 636 - (xt + 22);
         if (len > room) gt.style.fontSize = gsz * room / len + "px";
         $("seoMo").textContent = t < 0.5 ? "Launch" : "Month " + Math.round(t);
         var mo = Math.round(t), lab = mo === 0 ? "Launch day" : "Month " + mo; $("seoM1").textContent = lab; $("seoM2").textContent = lab;
