@@ -116,8 +116,8 @@
   .hero-photo > .wrap { width: 100%; }
   .hero-band { padding-top: calc(var(--u) * 4); }
   /* crop the sky so the team fills the frame; photo leads on phones */
-  .hero-figure { order: -1; margin: 0; aspect-ratio: 1600 / 617; overflow: hidden; }
-  .hero-figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; filter: brightness(1.15) saturate(1.05); }
+  .hero-figure { order: -1; margin: 0; aspect-ratio: 1600 / 772; overflow: hidden; }
+  .hero-figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
   .hero-photo .hero-meta { margin-top: calc(var(--u) * 3); border-top: 0; padding-top: 0; }
 
   /* Safety + capability detail cards */
@@ -193,7 +193,7 @@
     .hero.hero-photo { padding: 0 0 calc(var(--u) * 4); }
     .hero-band { display: grid; grid-template-columns: 1.5fr 1fr; gap: calc(var(--u) * 6); align-items: end; padding-top: calc(var(--u) * 4); padding-bottom: calc(var(--u) * 4); }
     .hero-photo h1 { font-size: clamp(2.25rem, 3vw, 3.25rem); max-width: none; }
-    .hero-figure { aspect-ratio: 1600 / 617; }
+    .hero-figure { aspect-ratio: 1600 / 772; }
     .hero-photo .hero-lede { margin-top: 0; }
     section { padding: calc(var(--u) * 12) 0; }
     .caps { grid-template-columns: repeat(3, 1fr); }
@@ -244,3 +244,14 @@
 /* Shown only when the site is opened from the proposal (site.js) */
 .proposal-bar { background: var(--accent); text-align: center; padding: 0 16px; }
 .proposal-bar a { display: inline-flex; align-items: center; min-height: 44px; color: #0f1630; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Project detail lines and photo slots (to confirm with owner) */
+.proj-scope { margin: 8px 0 0; }
+.proj-meta { margin: 4px 0 0; font-size: 0.9375rem; color: var(--rim); }
+.photo-slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; max-width: 480px; margin: 16px 0 0; border: 2px dashed #ffe14d; background: rgba(255, 225, 77, 0.06); padding: 16px; text-align: center; }
+.projects .photo-slot { aspect-ratio: 16 / 9; max-width: none; }
+
+/* Plans and specs upload on the quote form */
+input[type="file"] { padding: var(--u); cursor: pointer; }
+input[type="file"]::file-selector-button { margin-right: var(--u); border: 0; border-radius: 0; background: var(--accent); color: #0f1630; font: 700 0.875rem/1 var(--body); padding: 10px 16px; cursor: pointer; }
+.form-hint { margin: 0; font-size: 0.875rem; color: var(--rim); }
