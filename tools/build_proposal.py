@@ -61,6 +61,15 @@ MONTHLY_SCOPE = [
     "Keyword updates every month: we check what clients search for and what changed in Google's latest updates, then adjust your page titles, descriptions and wording to match.",
 ]
 
+# Tim's wording for the chart section's "kept current" column only (28 Oct 2026). The price box and agreement keep MONTHLY_SCOPE.
+CHART_KEPT = [
+    "Hosting, security, and uptime monitoring. Fixes when something breaks.",
+    "Small text or photo changes (about an hour a month).",
+    "New projects added to the Projects page when you send the photos.",
+    "Monthly check that the request-for-quote form still reaches you.",
+    "Keyword and wording updates every month. We check what clients are searching for after each AI Scan and adjust titles, descriptions, and copy to match.",
+]
+
 BUILD_SCOPE = [
     f"Your new website, built from the working preview, with every fix in the table above: {PAGE_LIST}, plus a page-not-found page.",
     "Each of your seven capabilities on its own page: crane and hoist, government, design-build, construction, fire alarm, telecom and commercial / industrial service.",
@@ -336,10 +345,10 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 
 SEO_CHART = """
         <div class="seochart" id="seochart">
-          <div class="seohead"><p class="seotitle">Two sites, twelve months after launch</p><button type="button" class="replay" id="seoReplay" aria-label="Replay the chart">↻ Replay</button>
+          <div class="seohead"><p class="seotitle">Two sites, twelve months later</p><button type="button" class="replay" id="seoReplay" aria-label="Replay the chart">↻ Replay</button>
             <ul class="seokey"><li><i class="k1"></i>Kept current every month</li><li><i class="k2"></i>Built and left alone</li></ul></div>
           <div class="seoplot" id="seoplot"><span class="ylab top">More</span><span class="ylab bot">Less</span>
-            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides lower after each Google update, and the revenue gained between them grows.">
+            <svg viewBox="0 0 640 270" role="img" aria-label="Illustration: a site kept current every month climbs steadily over twelve months; a site built and left alone slides lower after each AI Scan, and the revenue gained between them grows.">
               <defs>
                 <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0b13c" stop-opacity=".45"/><stop offset="1" stop-color="#f0b13c" stop-opacity="0"/></linearGradient>
                 <pattern id="gGap" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f0b13c" fill-opacity=".08"/><line x1="0" y1="0" x2="0" y2="8" stroke="#f0b13c" stroke-opacity=".28" stroke-width="2"/></pattern>
@@ -363,11 +372,11 @@ SEO_CHART = """
               <line id="seoX" class="xhair" y1="12" y2="252" opacity="0"/>
             </svg>
             <div class="xlabs" aria-hidden="true"><span style="left:0.6%">Launch</span><span class="mid" style="left:21.6%;transform:translateX(-50%)">3 mo</span><span style="left:42.5%;transform:translateX(-50%)">6 mo</span><span class="mid" style="left:63.4%;transform:translateX(-50%)">9 mo</span><span style="left:84.4%;transform:translateX(-50%)">12 mo</span></div>
-            <p class="seocap">How easily nearby buyers find you on Google (illustration). Hover or tap the chart to step through the year.</p>
+            <p class="seocap">How easily nearby buyers find you (illustration). Hover or tap to step through the year.</p>
           </div>
-          <div class="seonow"><p class="b"><b id="seoM1">Month 12</b>, kept current: <span id="seoT1">a year of monthly upkeep, each round keeping the site current.</span></p><p class="a"><b id="seoM2">Month 12</b>, left alone: <span id="seoT2">no changes since launch day.</span></p></div>
-          <p class="seonote">An illustration of the usual trend, not a forecast or a promise; the chart has no figures on purpose, and the Google update markers show the pattern, not real dates.</p>
-          <p class="seonote more">Your real numbers come from the before-and-after check below, starting from the Google listing baseline we save before the build.</p>
+          <div class="seonow"><p class="b"><b id="seoM1">Month 12</b> · Kept current: <span id="seoT1">12 monthly rounds so far. Each AI Scan is met with updates that keep the site current.</span></p><p class="a"><b id="seoM2">Month 12</b> · Left alone: <span id="seoT2">No changes since launch. Three AI Scans have passed with no response.</span></p></div>
+          <p class="seonote">Illustration of the usual pattern, not a forecast. No real numbers on the chart. AI Scan markers show the timing of change, not exact dates.</p>
+          <p class="seonote more">Your real numbers come from the before-and-after check, starting from the baseline we save before the build.</p>
         </div>
 """
 
@@ -391,7 +400,7 @@ SEO_JS = """
       }
       var ns = "http://www.w3.org/2000/svg", ug = $("seoUpd"), marks = UPD.map(function (m) {
         var g = document.createElementNS(ns, "g"); g.setAttribute("class", "upd");
-        g.innerHTML = '<line x1="' + x(m) + '" x2="' + x(m) + '" y1="22" y2="252"/><path d="M' + x(m) + ' 8l5 5-5 5-5-5z"/><text x="' + (x(m) + 8) + '" y="17">Google update</text>';
+        g.innerHTML = '<line x1="' + x(m) + '" x2="' + x(m) + '" y1="22" y2="252"/><path d="M' + x(m) + ' 8l5 5-5 5-5-5z"/><text x="' + (x(m) + 8) + '" y="17">AI Scan</text>';
         ug.appendChild(g); return g;
       });
       var phone = window.matchMedia("(max-width:640px)");
@@ -406,7 +415,7 @@ SEO_JS = """
         lb.setAttribute("x", right ? xt - 12 : xt + 12); lb.setAttribute("y", yb - 14); lb.setAttribute("text-anchor", right ? "end" : "start");
         la.setAttribute("x", right ? xt - 12 : xt + 12); la.setAttribute("y", ya > 225 ? ya - 12 : ya + 24); la.setAttribute("text-anchor", right ? "end" : "start");
         marks.forEach(function (g, i) { g.style.opacity = t >= UPD[i] - 0.3 ? 1 : 0; });
-        // The moment of a Google update: a ripple on the marker, and what happens to each site.
+        // The moment of an AI Scan: a ripple on the marker, and what happens to each site.
         var hot = UPD.filter(function (u) { return t >= u && t - u < 1.3; })[0], cA = $("seoChipA"), rp = $("seoRip");
         if (hot !== undefined && t < N) {
           var k = (t - hot) / 1.3, cx = Math.min(xt + 14, 640 - 136);
@@ -423,9 +432,9 @@ SEO_JS = """
         if (len > room) gt.style.fontSize = gsz * room / len + "px";
         $("seoMo").textContent = t < 0.5 ? "Launch" : "Month " + Math.round(t);
         var mo = Math.round(t), lab = mo === 0 ? "Launch day" : "Month " + mo; $("seoM1").textContent = lab; $("seoM2").textContent = lab;
-        $("seoT1").textContent = mo === 0 ? "the site goes live and the monthly work starts." : mo === 1 ? "one round of monthly upkeep so far." : mo + " rounds of monthly upkeep so far, each one keeping the site current.";
-        var hit = UPD.filter(function (u) { return u <= mo; }).length;
-        $("seoT2").textContent = mo === 0 ? "the site goes live and the builder moves on." : hit ? "no changes since launch day, through " + hit + " Google update" + (hit > 1 ? "s" : "") + "." : "no changes since launch day.";
+        var hit = UPD.filter(function (u) { return u <= mo; }).length, words = ["", "One", "Two", "Three"];
+        $("seoT1").textContent = mo === 0 ? "the site goes live and the monthly work starts." : mo + " monthly round" + (mo > 1 ? "s" : "") + " so far." + (hit ? " Each AI Scan is met with updates that keep the site current." : "");
+        $("seoT2").textContent = mo === 0 ? "the site goes live and the builder moves on." : hit ? "No changes since launch. " + words[hit] + " AI Scan" + (hit > 1 ? "s have" : " has") + " passed with no response." : "No changes since launch.";
       }
       draw(N);
       var reduce = !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -593,14 +602,14 @@ def proposal():
 {SEO_CHART}
         <div class="two" style="margin-top:28px">
           <div class="box"><h3>Built and left alone</h3><ul>
-            <li><span aria-hidden="true">✕ </span>The site is finished on launch day and nobody touches it again.</li>
-            <li><span aria-hidden="true">✕ </span>Google keeps changing how it ranks sites; the site does not change with it.</li>
-            <li><span aria-hidden="true">✕ </span>New jobs finish, but the Projects page still shows last year's work.</li>
-            <li><span aria-hidden="true">✕ </span>Nobody checks that quote requests still reach you.</li>
-            <li><span aria-hidden="true">✕ </span>No one is watching if the site goes down or a security certificate expires.</li>
+            <li><span aria-hidden="true">✕ </span>Finished on launch day and never touched again.</li>
+            <li><span aria-hidden="true">✕ </span>AI Scans change how sites rank. This one does not change with them.</li>
+            <li><span aria-hidden="true">✕ </span>New jobs finish. The Projects page still shows last year’s work.</li>
+            <li><span aria-hidden="true">✕ </span>No one checks that quote requests still arrive.</li>
+            <li><span aria-hidden="true">✕ </span>No one watches if the site goes down or the security certificate expires.</li>
           </ul></div>
           <div class="box goldbox"><h3>Your {money(MONTHLY)} a month: kept current</h3><ul>
-{ul(MONTHLY_SCOPE, '<span aria-hidden="true">✓ </span>')}
+{ul(CHART_KEPT, '<span aria-hidden="true">✓ </span>')}
           </ul></div>
         </div>
         <p class="seoclose">The build gets you a great site on launch day. The monthly plan is what keeps it working.</p>
