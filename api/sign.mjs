@@ -3,6 +3,22 @@
 // Needs SUPABASE_URL and SUPABASE_KEY (the project's publishable key) in this Vercel project.
 const SHOP = "ph-electric";
 const VERSION = "v1 · 21 Oct 2026"; // must match build_proposal.py
+const ALERT_TO = "tim@airocket.pro"; // Tim only, never the prospect
+
+// Signed alert (28 Oct 2026). Uses the same RESEND_API_KEY and ALERT_FROM shared variables as track.mjs.
+async function alertSigned(name, business, id, request) {
+  const key = process.env.RESEND_API_KEY, from = process.env.ALERT_FROM;
+  if (!key || !from) return console.error("[proposal-sign] alert skipped: RESEND_API_KEY or ALERT_FROM missing");
+  const link = `${new URL(request.url).origin}/agreement/?sig=${id}`;
+  const when = new Date().toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" });
+  const text = `${name} signed the agreement for ${business} at ${when} ET.\n\nSigned copy: ${link}\n\nNext: they are sent to the Stripe deposit page. Check Stripe for the payment.`;
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from, to: [ALERT_TO], subject: `${name} signed the PH Electric agreement`, text }),
+  }).catch((e) => console.error("[proposal-sign] alert failed", e));
+  if (r && !r.ok) console.error("[proposal-sign] alert failed", r.status, await r.text());
+}
 
 async function rpc(fn, args) {
   const url = process.env.SUPABASE_URL, key = process.env.SUPABASE_KEY;
@@ -37,6 +53,7 @@ export async function POST(request) {
       p_domain: typeof b.domain === "string" && /^[a-z0-9.|\- ]{1,60}$/.test(b.domain) ? b.domain : null,
     });
     console.log(`[proposal-sign] ${SHOP} signed by ${name} for ${business} (${id})`);
+    await alertSigned(name, business, id, request);
     return json({ id });
   } catch (e) {
     console.error("[proposal-sign] save failed", e);
