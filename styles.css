@@ -262,3 +262,6 @@ fieldset.yn input, label.consent input { width: auto; min-height: 0; }
 select { width: 100%; min-height: calc(var(--u) * 6); padding: var(--u) calc(var(--u) * 2); font: 400 1rem/1.5 var(--body); color: var(--text); background: var(--base); border: 1px solid #3a4a80; border-radius: 0; }
 button[disabled] { opacity: 0.55; cursor: not-allowed; }
 @media (min-width: 960px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+
+/* Single leader card */
+@media (min-width: 640px) { .leaders.solo { grid-template-columns: minmax(0, 560px); } }
