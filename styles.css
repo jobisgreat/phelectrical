@@ -257,3 +257,6 @@ input[type="file"]::file-selector-button { margin-right: var(--u); border: 0; bo
 .form-hint { margin: 0; font-size: 0.875rem; color: var(--rim); }
 /* Leadership headshots */
 .leader-photo { display: block; width: 160px; height: 160px; object-fit: cover; margin: 0 0 16px; border: 2px solid var(--accent); }
+
+/* Single leader card */
+@media (min-width: 640px) { .leaders.solo { grid-template-columns: minmax(0, 560px); } }
