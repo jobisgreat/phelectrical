@@ -78,6 +78,7 @@
       <div class="photo-slot" role="img" aria-label="Leadership or team photo to come"><span class="todo">To confirm with owner – insert photo (leadership or team photo, supplied by PH Electric)</span></div>
       <div class="leaders solo">
         <div class="leader">
+          <picture><source srcset="img/david-howard.webp" type="image/webp"><img class="leader-photo" src="img/david-howard.jpg" width="400" height="400" alt="David B. Howard, PE, of PH Electric" loading="lazy"></picture>
           <h3>David B. Howard, PE</h3>
           <p class="role">President</p>
           <p class="cred">Professional engineer and master electrician. B.S. Electrical Engineering (Power Option), Worcester Polytechnic Institute.</p>
@@ -138,7 +139,7 @@
         <label>Company<input name="company" autocomplete="organization" required></label>
         <label>Phone or email<input name="contact" autocomplete="email" required></label>
         <label>Project scope and location<textarea name="scope" required></textarea></label>
-        <button class="btn btn-primary" type="submit">Send request</button>
+        <label>Plans and specs (optional)<input type="file" name="files" multiple accept=".pdf,.dwg,.dxf,.zip,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"></label><p class="form-hint">Drawings, specifications or bid documents: PDF, DWG, Office files, images or ZIP.</p><p class="todo">To confirm with owner: where uploaded plans and specs are delivered (email address or shared folder), and the largest file size to accept.</p><button class="btn btn-primary" type="submit">Send request</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>

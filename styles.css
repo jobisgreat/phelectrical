@@ -241,6 +241,10 @@
   .checklist li { display: flex; gap: calc(var(--u) * 2); align-items: baseline; padding: calc(var(--u) * 1.5) calc(var(--u) * 2); background: var(--base-2); border-left: 4px solid var(--accent); }
   @media (min-width: 640px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
 
+/* Shown only when the site is opened from the proposal (site.js) */
+.proposal-bar { background: var(--accent); text-align: center; padding: 0 16px; }
+.proposal-bar a { display: inline-flex; align-items: center; min-height: 44px; color: #0f1630; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
 /* Project detail lines and photo slots (to confirm with owner) */
 .proj-scope { margin: 8px 0 0; }
 .proj-meta { margin: 4px 0 0; font-size: 0.9375rem; color: var(--rim); }
@@ -262,6 +266,12 @@ fieldset.yn input, label.consent input { width: auto; min-height: 0; }
 select { width: 100%; min-height: calc(var(--u) * 6); padding: var(--u) calc(var(--u) * 2); font: 400 1rem/1.5 var(--body); color: var(--text); background: var(--base); border: 1px solid #3a4a80; border-radius: 0; }
 button[disabled] { opacity: 0.55; cursor: not-allowed; }
 @media (min-width: 960px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+/* Plans and specs upload on the quote form */
+input[type="file"] { padding: var(--u); cursor: pointer; }
+input[type="file"]::file-selector-button { margin-right: var(--u); border: 0; border-radius: 0; background: var(--accent); color: #0f1630; font: 700 0.875rem/1 var(--body); padding: 10px 16px; cursor: pointer; }
+.form-hint { margin: 0; font-size: 0.875rem; color: var(--rim); }
+/* Leadership headshots */
+.leader-photo { display: block; width: 160px; height: 160px; object-fit: cover; margin: 0 0 16px; border: 2px solid var(--accent); }
 
 /* Single leader card */
 @media (min-width: 640px) { .leaders.solo { grid-template-columns: minmax(0, 560px); } }
