@@ -6,7 +6,7 @@ const PROPOSAL = {
   depositLabel: "Pay the $4,250 deposit", // button text the deposit alert quotes
   prospects: {
     // link code -> name shown in the alert. Send each person their own ?p= link.
-    // Add one code per person once Tim names them, e.g. bruce: "Bruce Howard (PH Electric)".
+    // Add one code per person once Tim names them, e.g. david: "David Howard (PH Electric)".
     test: "Test visit (Tim)",
   },
 };
