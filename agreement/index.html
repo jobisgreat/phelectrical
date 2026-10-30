@@ -24,6 +24,8 @@
     .signed { border:2px solid var(--ok); background:#eef7f0; padding:14px 16px; border-radius:6px; margin-bottom:24px; }
     .signed b { color: var(--ok); }
     @media print { nav, .noprint { display:none; } body { background:#fff; } }
+    /* Release 2026-10-30: hide [To confirm] markers publicly (markers stay in the HTML) */
+  mark.ph { display: none !important; }
   </style>
 </head>
 <body>

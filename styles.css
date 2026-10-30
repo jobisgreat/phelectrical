@@ -275,3 +275,6 @@ input[type="file"]::file-selector-button { margin-right: var(--u); border: 0; bo
 
 /* Single leader card */
 @media (min-width: 640px) { .leaders.solo { grid-template-columns: minmax(0, 560px); } }
+
+/* Release 2026-10-30: hide all owner-review markers publicly (markers stay in the HTML) */
+.todo, .todo.page-flag, .todo.proj-note, .todo.preview-note { display: none !important; }
