@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800;900&family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>.grad-grid{display:grid;gap:calc(var(--u)*3);grid-template-columns:1fr}@media(min-width:640px){.grad-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.grad-grid{grid-template-columns:repeat(3,1fr)}}.grad-fig img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--base-2)}.grad-fig figcaption{margin-top:var(--u);color:var(--text-dim);font-size:.95rem}</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,7 +40,7 @@
       <a class="crumb" href="careers.html">Careers</a>
       <p class="eyebrow">PH University</p>
       <h1>PH University</h1>
-      <p class="hero-lede"><strong>P&amp;H University</strong> <span class="todo">[TO CONFIRM: final program name]</span>. Earn while you learn: a paid apprenticeship, free school, and 4 years to journeyman, in Massachusetts and New Hampshire.</p>
+      <p class="hero-lede"><strong>PH University</strong> <span class="todo">[TO CONFIRM: final program name]</span>. Earn while you learn: a paid apprenticeship, free school, and 4 years to journeyman, in Massachusetts and New Hampshire.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#apply">Apply</a>
         <a class="btn btn-ghost" href="tel:+16033823182">Call 603-382-3182</a>
@@ -80,7 +81,7 @@
     </div>
   </section>
 
-  <section id="results" aria-labelledby="results-title">
+  <section id="results" aria-labelledby="results-title" hidden><!-- RESULTS-HIDDEN (release 2026-10-30): numbers unconfirmed; remove hidden attribute to restore -->
     <div class="wrap">
       <div class="sec-head">
         <h2 id="results-title">Results</h2>
@@ -130,7 +131,7 @@
       <div class="sec-head">
         <h2 id="classes-title">Graduating Classes</h2>
       </div>
-      <div class="grad-grid"><figure class="grad-fig"><img src="img/ph-university/2021-launch.jpg" alt="Group of PH University apprentices and staff in a training hall in front of a PH University banner" loading="lazy" decoding="async" width="640" height="640"><figcaption>Instagram post, Sep 8, 2021 (program launch) <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/class-of-2027.jpg" alt="Group photo of apprentices under a PH University banner, with a whiteboard reading Welcome to PH University Class of 2027" loading="lazy" decoding="async" width="640" height="640"><figcaption>Instagram post, Sep 5, 2023 (class of 2027) <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/2024-incoming.jpg" alt="Close group photo of apprentices and staff, many in PH Electric shirts" loading="lazy" decoding="async" width="640" height="640"><figcaption>Instagram post, Sep 10, 2024 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/class-of-2029.jpg" alt="Group of apprentices beneath a screen reading Welcome back to PH University, Class of 2029" loading="lazy" decoding="async" width="640" height="640"><figcaption>Instagram post, Sep 9, 2025 (class of 2029) <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/group-2025.jpg" alt="Large group of apprentices standing and kneeling below the PH University logo" loading="lazy" decoding="async" width="640" height="640"><figcaption>Instagram post, Jun 30, 2025 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure></div>
+      <div class="grad-grid"><figure class="grad-fig"><img src="img/ph-university/2021-launch.jpg" alt="Group of PH University apprentices and staff in a training hall in front of a PH University banner" loading="lazy" decoding="async" width="640" height="640"><figcaption>Sep 8, 2021 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/class-of-2027.jpg" alt="Group photo of apprentices under a PH University banner, with a whiteboard reading Welcome to PH University Class of 2027" loading="lazy" decoding="async" width="640" height="640"><figcaption>Sep 5, 2023 · Class of 2027 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/2024-incoming.jpg" alt="Close group photo of apprentices and staff, many in PH Electric shirts" loading="lazy" decoding="async" width="640" height="640"><figcaption>Sep 10, 2024 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/class-of-2029.jpg" alt="Group of apprentices beneath a screen reading Welcome back to PH University, Class of 2029" loading="lazy" decoding="async" width="640" height="640"><figcaption>Sep 9, 2025 · Class of 2029 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure><figure class="grad-fig"><img src="img/ph-university/group-2025.jpg" alt="Large group of apprentices standing and kneeling below the PH University logo" loading="lazy" decoding="async" width="640" height="640"><figcaption>Jun 30, 2025 <span class="todo">[TO CONFIRM: class year/caption]</span></figcaption></figure></div>
     </div>
   </section>
 
@@ -155,7 +156,7 @@
         <fieldset class="yn"><legend>Are you a veteran?</legend><label><input type="radio" name="veteran" value="yes"> Yes</label><label><input type="radio" name="veteran" value="no"> No</label></fieldset>
         <label>Prior electrical hours or vo-tech<textarea name="prior"></textarea></label>
         <label>Preferred start term<select name="term"><option value="">Select</option><!-- TODO-HIDDEN (release 2026-10-30): <option disabled>[TO CONFIRM: start terms]</option> --></select></label>
-        <label>Resume<input type="file" name="resume" accept=".pdf,.doc,.docx" disabled></label>
+        <!-- RESUME-HIDDEN (release 2026-10-30) <label>Resume<input type="file" name="resume" accept=".pdf,.doc,.docx" disabled></label> -->
         <label>How did you hear about us?<input name="source"></label>
         <label class="consent"><input type="checkbox" name="consent"> I agree to be contacted by SMS and email about my application.</label>
         <button class="btn btn-primary" type="submit" disabled aria-disabled="true">Applications opening soon</button>
