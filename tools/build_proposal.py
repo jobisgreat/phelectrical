@@ -129,6 +129,17 @@ SOURCES = [
      "https://projectcostestimator.com/blog/construction-company-website-cost-2026", "ProjectCostEstimator, 2026"),
 ]
 
+# Strengths the page leads with (redesign, 6 Nov 2026). From phelectricalcontractor.com, plus four facts Tim confirmed on
+# 6 Nov 2026 ("all claims are correct"): fully insured, own crews, residential work, Greater Boston.
+STRENGTHS = [
+    ("Since 1972", "In business since 1972, from Plaistow, NH, serving Greater Boston and all of New England."),
+    ("Master licensed, fully insured", "Led by David B. Howard, PE: master electrician and professional engineer, B.S. Electrical Engineering, WPI. Fully insured."),
+    ("Our own crews", "Work done by PH Electric's own crews, with in-house engineering for design-build."),
+    ("Commercial and residential", "Commercial, industrial, government and residential electrical work."),
+    ("Code-compliant, safety first", "Fire alarm testing to NFPA, crane and hoist inspections aligned with ANSI and OSHA, and NH/VT ABC Construction Industry Safety Awards (First Place 2009, Second Place 2011)."),
+    ("Named work across New England", "VA Medical Centers in West Roxbury and West Haven, UMass Lowell, Tufts University, Boston Scientific and 20 more named projects."),
+]
+
 NEEDS = [
     "Answers to the yellow “To confirm with owner” items on the preview: market groupings, project scopes, licenses, bonding, insurance, EMR, bid turnaround and estimating contact. Nothing goes live until you confirm it.",
     "Your own project and team photos, so we can replace the AI-made header photo and add photos to your projects.",
@@ -282,8 +293,6 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .replay{margin-left:auto;background:transparent;border:1px solid rgba(242,245,247,.35);color:#f2f5f7;border-radius:0;padding:4px 12px;font-weight:500;font-size:13px;cursor:pointer}
 .replay:hover{background:rgba(255,255,255,.08)}
 @media(max-width:640px){.seoplot .beam text{display:none} .seoplot .mo{font-size:44px}}
-.seoplot .xhair{stroke:#f2f5f7;stroke-opacity:.5;stroke-width:1}
-.seoplot svg{cursor:crosshair;touch-action:pan-y}
 @media (prefers-reduced-motion:reduce){.seoplot .pulse{animation:none;opacity:0}}
 .ylab{position:absolute;left:0;font-size:13px;color:rgba(242,245,247,.7)} .ylab.top{top:0} .ylab.bot{bottom:44px}
 .xlabs{position:relative;height:22px;font-size:13px;color:rgba(242,245,247,.7)} .xlabs span{position:absolute;top:2px;white-space:nowrap}
@@ -332,6 +341,47 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
   .bar[hidden] { display: none; }
   body { padding-bottom: 76px; }
 }
+/* Redesign, 6 Nov 2026: a bid-document look. Rule lines and label columns instead of cards. */
+header h1 { font-size: clamp(34px, 4.2vw, 54px); max-width: 18ch; }
+section[data-slide] h2, .findings h2 { font-size: clamp(28px, 3.6vw, 42px); max-width: 24ch; }
+.cover { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+header img.shoplogo { width: min(360px, 100%); margin: 0 0 22px; }
+.forfirm { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-lt); margin: 0 0 14px; }
+.glance { border-top: 4px solid var(--accent); background: rgba(242,245,247,.04); padding: 6px 20px 18px; }
+.glance h2 { font-family: var(--display); font-size: 22px; text-transform: uppercase; color: var(--onink); margin: 12px 0 4px; max-width: none; }
+.glance dl { margin: 0; }
+.glance div { display: grid; grid-template-columns: 8.5em 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(242,245,247,.16); }
+.glance dt { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-lt); padding-top: 3px; }
+.glance dd { margin: 0; font-size: 17px; }
+.glance dd b { font-family: var(--display); font-size: 22px; }
+.glance a { color: var(--accent-lt); font-weight: 700; text-underline-offset: 4px; }
+.strengths { background: var(--alt); }
+.strengths ul { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; border-top: 2px solid var(--accent); }
+.strengths li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.strengths b { display: block; font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 6px; }
+.strengths span { color: var(--muted); }
+dl.summary { display: block; margin: 40px 0 0; border-top: 2px solid var(--accent); }
+dl.summary > div, dl.summary > div.pricecell { display: grid; grid-template-columns: 11em 1fr; gap: 20px; background: none; border-left: 0; border-bottom: 1px solid rgba(242,245,247,.18); padding: 18px 0; }
+dl.summary dt { font-size: 13px; padding-top: 4px; }
+dl.summary dd { margin: 0; }
+dl.summary div.pricecell .pcols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 36px; border: 0; padding: 0; }
+dl.summary .pcols > div { display: block; border: 0; padding: 0; }
+.grid3 { gap: 0 40px; margin-top: 26px; border-top: 2px solid var(--accent); }
+.grid3 li { background: none; border: 0; border-bottom: 1px solid var(--line); padding: 18px 0; }
+.pages { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; gap: 0 40px; max-width: none; border-top: 2px solid var(--accent); }
+.pages a { display: flex; min-height: 48px; padding: 10px 0; border: 0; border-bottom: 1px solid var(--line); background: none; }
+.pages a::after { content: "→"; margin-left: auto; color: var(--accent-lt); }
+.confirm { border-top: 4px solid #ffe14d; background: var(--surface); padding: 20px 22px; margin-top: 24px; max-width: 52rem; }
+.confirm p.h { font-weight: 700; margin: 0; }
+.confirm ul { margin: 6px 0 18px; padding-left: 20px; } .confirm li { margin: 6px 0; }
+.confirm ul:last-child { margin-bottom: 0; }
+@media (max-width: 900px) { .cover { grid-template-columns: 1fr; gap: 28px; } .strengths ul, .pages { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .strengths ul, .pages { grid-template-columns: 1fr; }
+  dl.summary > div, dl.summary > div.pricecell { grid-template-columns: 1fr; gap: 6px; }
+  dl.summary div.pricecell .pcols { grid-template-columns: 1fr; }
+  .glance div { grid-template-columns: 1fr; gap: 2px; }
+}
 @media print {
   @page { size: letter landscape; margin: .4in; } html { font-size: 10px; }
   .banner, .btns, .bar { display: none !important; }
@@ -365,10 +415,9 @@ SEO_CHART = """
               <circle id="seoPulse" r="9" class="pulse"/><circle id="seoDB" r="8" class="dotB"/>
               <text id="seoLB0" class="endl b" x="12" y="144">Site That Climbs</text><text id="seoLB" class="endl b">Site That Climbs</text><text id="seoLA" class="endl a">Falling</text>
               <text id="seoMo" class="mo" x="22" y="48">Launch</text>
-              <line id="seoX" class="xhair" y1="12" y2="252" opacity="0"/>
             </svg>
             <div class="xlabs" aria-hidden="true"><span style="left:0.6%">Launch</span><span class="mid" style="left:21.6%;transform:translateX(-50%)">3 mo</span><span style="left:42.5%;transform:translateX(-50%)">6 mo</span><span class="mid" style="left:63.4%;transform:translateX(-50%)">9 mo</span><span style="left:84.4%;transform:translateX(-50%)">12 mo</span></div>
-            <p class="seocap">How easily nearby buyers find you (illustration). Hover or tap to step through the year.</p>
+            <p class="seocap">How easily nearby buyers find you (illustration).</p>
           </div>
           <div class="seonow"><p class="b"><b id="seoM1">Month 12</b> · Kept current: <span id="seoT1">12 monthly rounds so far, keeping up with AI scans that never stop.</span></p><p class="a"><b id="seoM2">Month 12</b> · Left alone: <span id="seoT2">No changes since launch. AI keeps scanning, so it slips a little more every month.</span></p></div>
           <p class="seonote">Illustration of the usual pattern, not a forecast. No real numbers on the chart. AI scans run all the time; the marks show the pattern, not exact dates.</p>
@@ -377,7 +426,7 @@ SEO_CHART = """
 """
 
 SEO_JS = """
-    // SEO chart (from the DeVellis Zrein proposal, 27 Oct 2026): draws on a loop while on screen; hover or tap to scrub; holds still for reduced motion.
+    // SEO chart (from the DeVellis Zrein proposal, 27 Oct 2026): draws on a loop while on screen; holds still for reduced motion.
     (function () {
       // AI scans never stop (Tim, 28 Oct 2026): a mark every month, a scanning beam that rides the front of the gold line, and the left-alone line slips every month.
       var A = [30, 28.5, 26.5, 24, 21.5, 19, 16.5, 14, 11.5, 9, 6, 3, 0], B = [30, 33, 36, 40, 44, 47, 51, 55, 58, 62, 66, 69, 73], N = 12, UPD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -436,17 +485,10 @@ SEO_JS = """
       }
       draw(N);
       var reduce = !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var raf = 0, visible = false, scrubbing = false;
+      var raf = 0, visible = false; // plays on its own; no hover or drag (Tim, 6 Nov 2026)
       function loop() { cancelAnimationFrame(raf); var start = performance.now(); (function step(now) { var f = Math.min(1, ((now - start) % 19000) / 14000), e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2; draw(e * N); raf = requestAnimationFrame(step); })(start); }
-      if (!reduce) new IntersectionObserver(function (es) { visible = es.some(function (e) { return e.isIntersecting; }); cancelAnimationFrame(raf); if (visible && !scrubbing) loop(); }, { threshold: 0.3 }).observe(box);
-      function scrub(e) {
-        var r = svg.getBoundingClientRect(), vx = ((e.clientX - r.left) / r.width) * 640, t = Math.max(0, Math.min(N, ((vx - 4) / 536) * N));
-        scrubbing = true; cancelAnimationFrame(raf); draw(t);
-        var xh = $("seoX"); xh.setAttribute("x1", x(t)); xh.setAttribute("x2", x(t)); xh.setAttribute("opacity", 1);
-      }
-      $("seoReplay").addEventListener("click", function () { scrubbing = false; $("seoX").setAttribute("opacity", 0); if (reduce) { var st = performance.now(); cancelAnimationFrame(raf); (function step(now) { var f = Math.min(1, (now - st) / 14000); draw(f * N); if (f < 1) raf = requestAnimationFrame(step); })(st); } else loop(); });
-      svg.addEventListener("pointermove", scrub); svg.addEventListener("pointerdown", scrub);
-      svg.addEventListener("pointerleave", function () { scrubbing = false; $("seoX").setAttribute("opacity", 0); if (reduce) draw(N); else if (visible) loop(); });
+      if (!reduce) new IntersectionObserver(function (es) { visible = es.some(function (e) { return e.isIntersecting; }); cancelAnimationFrame(raf); if (visible) loop(); }, { threshold: 0.3 }).observe(box);
+      $("seoReplay").addEventListener("click", function () { if (reduce) { var st = performance.now(); cancelAnimationFrame(raf); (function step(now) { var f = Math.min(1, (now - st) / 14000); draw(f * N); if (f < 1) raf = requestAnimationFrame(step); })(st); } else loop(); });
     })();
 """
 
@@ -465,10 +507,15 @@ def proposal():
     pay = (f'<a class="btn main" id="paylink" href="{DEPOSIT_LINK}" hidden>Pay the {money(DEPOSIT)} deposit</a>'
            if DEPOSIT_LINK else '<span id="paylink-missing" hidden></span>')
     deposit_attr = DEPOSIT_LINK or ""
-    launch = val(LAUNCH, "launch time")
+    launch = html.escape(LAUNCH) if LAUNCH else "To be set with you (see Still to confirm below)."
     gap_n = len(GAPS)
-    forge = html.escape(FORGE_LINE) if FORGE_LINE else ph("Forge's one-line promise")
-    domain = html.escape(DOMAIN) if DOMAIN else "your domain " + ph("phelectricalcontractor.com or PHelectric.net")
+    forge = f'<p class="forge">{html.escape(FORGE_LINE)}</p>' if FORGE_LINE else ""
+    domain = html.escape(DOMAIN) if DOMAIN else "your current domain"
+    strengths = "\n".join(f"          <li><b>{html.escape(a)}</b><span>{html.escape(b)}</span></li>" for a, b in STRENGTHS)
+    # Everything still open, in one place (Tim, 6 Nov 2026).
+    ours = [t for v, t in ((FORGE_LINE, "The one-line promise at the top of this page."),
+                           (DOMAIN, "Which domain you keep: phelectricalcontractor.com or PHelectric.net."),
+                           (LAUNCH, "Your launch date, counted from the deposit.")) if not v]
 
     return f"""<!doctype html>
 <html lang="en">
@@ -498,14 +545,30 @@ def proposal():
 
   <header>
     <div class="wrap">
-      <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
-      <p class="forge">{forge}</p>
-      <p class="tagline">Not a brochure. A website that brings in work.</p>
-      <h1>Turn the buyers who look you up into bid invitations.</h1>
-      <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
+      <div class="cover">
+        <div>
+          <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
+          <p class="forfirm">Website proposal for {html.escape(LEGAL_NAME)}</p>
+          {forge}
+          <p class="tagline">Not a brochure. A website that brings in work.</p>
+          <h1>Turn the buyers who look you up into bid invitations.</h1>
+          <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
+        </div>
+        <aside class="glance" aria-label="Proposal at a glance">
+          <h2>At a glance</h2>
+          <dl>
+            <div><dt>Prepared for</dt><dd>{html.escape(LEGAL_NAME)}</dd></div>
+            <div><dt>Prepared by</dt><dd>Tim Regan, AI Rocket</dd></div>
+            <div><dt>Scope</dt><dd>An {len(PAGES)}-page website, plus a monthly plan that keeps it current</dd></div>
+            <div><dt>Build</dt><dd><b>{money(BUILD)}</b><br>{money(DEPOSIT)} at signing, {money(BUILD - DEPOSIT)} at launch</dd></div>
+            <div><dt>Monthly</dt><dd><b>{money(MONTHLY)}</b> a month, from launch day</dd></div>
+            <div><dt>Next step</dt><dd><a href="#accept">Sign the agreement and pay the deposit →</a></dd></div>
+          </dl>
+        </aside>
+      </div>
       <figure class="shot">
         <div class="frame"><img src="site-home.jpg" alt="The new PH Electric home page on a computer" width="1440" height="900"></div>
-        <figcaption>Your new home page, as a general contractor sees it on a computer. The team photo at the top is AI-made, a stand-in until we have your own photos.</figcaption>
+        <figcaption>Your new home page, as a general contractor sees it on a computer. The header photo is AI-made, a stand-in until we have your own team photos.</figcaption>
       </figure>
       <div class="btns">
         <a class="btn main" href="#proposal">See your proposal</a>
@@ -514,6 +577,17 @@ def proposal():
       </div>
     </div>
   </header>
+
+  <section class="strengths" data-slide>
+    <div class="wrap">
+      <p class="eyebrow">What your new site leads with</p>
+      <h2>Why buyers can trust PH Electric</h2>
+      <ul>
+{strengths}
+      </ul>
+      <p class="note" style="color:var(--muted)">Sources: phelectricalcontractor.com (checked {CHECKED}) and Tim Regan, AI Rocket.</p>
+    </div>
+  </section>
 
   <section class="findings" id="findings" data-slide>
     <div class="wrap">
@@ -703,12 +777,16 @@ def proposal():
 
     <section data-slide>
       <div class="wrap">
-        <p class="eyebrow">What we need from you</p>
-        <h2>{len(NEEDS)} things only you can confirm</h2>
-        <p class="lead">Nothing goes on your real site until you confirm it.</p>
-        <ul style="font-size:18px;max-width:46rem">
+        <p class="eyebrow">Before launch</p>
+        <h2>Still to confirm</h2>
+        <p class="lead">Nothing goes on your real site until it is confirmed.</p>
+        <div class="confirm">
+          <p class="h">From you:</p>
+          <ul>
 {ul(NEEDS)}
-        </ul>
+          </ul>
+          {('<p class="h">To agree together:</p><ul>' + chr(10).join(f'<li>{html.escape(t)}</li>' for t in ours) + '</ul>') if ours else ''}
+        </div>
         <div class="card">
           <img class="logo" src="airocket-logo.jpg" alt="AI Rocket" width="600" height="558">
           <img class="tim" src="tim-regan.jpg" alt="Tim Regan, founder of AI Rocket" width="400" height="400">
