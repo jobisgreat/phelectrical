@@ -129,6 +129,19 @@ SOURCES = [
      "https://projectcostestimator.com/blog/construction-company-website-cost-2026", "ProjectCostEstimator, 2026"),
 ]
 
+# Strengths the page leads with (redesign, 6 Nov 2026). Only facts from phelectricalcontractor.com; nothing Tim or PH Electric has not confirmed.
+STRENGTHS = [
+    ("Since 1972", "In business since 1972, from 222 Plaistow Road, Plaistow, NH."),
+    ("Master electrician leadership", "David B. Howard, PE: master electrician and professional engineer, B.S. Electrical Engineering, WPI."),
+    ("In-house engineering", "Design-build delivery, with the professional engineering done in house."),
+    ("Inspected and tested to code", "Fire alarm inspections and testing to NFPA, and crane and hoist inspections aligned with ANSI and OSHA."),
+    ("Safety record", "A strong safety record for more than 40 years, with NH/VT ABC Construction Industry Safety Awards: First Place 2009, Second Place 2011."),
+    ("Named work across New England", "VA Medical Centers in West Roxbury and West Haven, UMass Lowell, Tufts University, Boston Scientific and 20 more named projects."),
+]
+
+# Claims Tim asked for on 6 Nov 2026 that no source supports yet. They stay off the page until PH Electric confirms them.
+UNCONFIRMED_CLAIMS = "fully insured, your own crews, residential work, and Greater Boston as a named service area"
+
 NEEDS = [
     "Answers to the yellow “To confirm with owner” items on the preview: market groupings, project scopes, licenses, bonding, insurance, EMR, bid turnaround and estimating contact. Nothing goes live until you confirm it.",
     "Your own project and team photos, so we can replace the AI-made header photo and add photos to your projects.",
@@ -136,6 +149,7 @@ NEEDS = [
     "The email address your request-for-quote form should go to.",
     "A login for your domain (or the name of whoever manages it), so we can point it at the new site without touching your company email.",
     "Add AI Rocket (tim@airocket.pro) as a manager on your Google listing, so we can clean it up and measure your before-and-after numbers.",
+    f"Whether these can go on your site: {UNCONFIRMED_CLAIMS}.",
 ]
 
 
@@ -332,6 +346,47 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
   .bar[hidden] { display: none; }
   body { padding-bottom: 76px; }
 }
+/* Redesign, 6 Nov 2026: a bid-document look. Rule lines and label columns instead of cards. */
+header h1 { font-size: clamp(34px, 4.2vw, 54px); max-width: 18ch; }
+section[data-slide] h2, .findings h2 { font-size: clamp(28px, 3.6vw, 42px); max-width: 24ch; }
+.cover { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+header img.shoplogo { width: min(360px, 100%); margin: 0 0 22px; }
+.forfirm { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-lt); margin: 0 0 14px; }
+.glance { border-top: 4px solid var(--accent); background: rgba(242,245,247,.04); padding: 6px 20px 18px; }
+.glance h2 { font-family: var(--display); font-size: 22px; text-transform: uppercase; color: var(--onink); margin: 12px 0 4px; max-width: none; }
+.glance dl { margin: 0; }
+.glance div { display: grid; grid-template-columns: 8.5em 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(242,245,247,.16); }
+.glance dt { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-lt); padding-top: 3px; }
+.glance dd { margin: 0; font-size: 17px; }
+.glance dd b { font-family: var(--display); font-size: 22px; }
+.glance a { color: var(--accent-lt); font-weight: 700; text-underline-offset: 4px; }
+.strengths { background: var(--alt); }
+.strengths ul { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; border-top: 2px solid var(--accent); }
+.strengths li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.strengths b { display: block; font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 6px; }
+.strengths span { color: var(--muted); }
+dl.summary { display: block; margin: 40px 0 0; border-top: 2px solid var(--accent); }
+dl.summary > div, dl.summary > div.pricecell { display: grid; grid-template-columns: 11em 1fr; gap: 20px; background: none; border-left: 0; border-bottom: 1px solid rgba(242,245,247,.18); padding: 18px 0; }
+dl.summary dt { font-size: 13px; padding-top: 4px; }
+dl.summary dd { margin: 0; }
+dl.summary div.pricecell .pcols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 36px; border: 0; padding: 0; }
+dl.summary .pcols > div { display: block; border: 0; padding: 0; }
+.grid3 { gap: 0 40px; margin-top: 26px; border-top: 2px solid var(--accent); }
+.grid3 li { background: none; border: 0; border-bottom: 1px solid var(--line); padding: 18px 0; }
+.pages { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; gap: 0 40px; max-width: none; border-top: 2px solid var(--accent); }
+.pages a { display: flex; min-height: 48px; padding: 10px 0; border: 0; border-bottom: 1px solid var(--line); background: none; }
+.pages a::after { content: "→"; margin-left: auto; color: var(--accent-lt); }
+.confirm { border-top: 4px solid #ffe14d; background: var(--surface); padding: 20px 22px; margin-top: 24px; max-width: 52rem; }
+.confirm p.h { font-weight: 700; margin: 0; }
+.confirm ul { margin: 6px 0 18px; padding-left: 20px; } .confirm li { margin: 6px 0; }
+.confirm ul:last-child { margin-bottom: 0; }
+@media (max-width: 900px) { .cover { grid-template-columns: 1fr; gap: 28px; } .strengths ul, .pages { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .strengths ul, .pages { grid-template-columns: 1fr; }
+  dl.summary > div, dl.summary > div.pricecell { grid-template-columns: 1fr; gap: 6px; }
+  dl.summary div.pricecell .pcols { grid-template-columns: 1fr; }
+  .glance div { grid-template-columns: 1fr; gap: 2px; }
+}
 @media print {
   @page { size: letter landscape; margin: .4in; } html { font-size: 10px; }
   .banner, .btns, .bar { display: none !important; }
@@ -465,10 +520,15 @@ def proposal():
     pay = (f'<a class="btn main" id="paylink" href="{DEPOSIT_LINK}" hidden>Pay the {money(DEPOSIT)} deposit</a>'
            if DEPOSIT_LINK else '<span id="paylink-missing" hidden></span>')
     deposit_attr = DEPOSIT_LINK or ""
-    launch = val(LAUNCH, "launch time")
+    launch = html.escape(LAUNCH) if LAUNCH else "To be set with you (see Still to confirm below)."
     gap_n = len(GAPS)
-    forge = html.escape(FORGE_LINE) if FORGE_LINE else ph("Forge's one-line promise")
-    domain = html.escape(DOMAIN) if DOMAIN else "your domain " + ph("phelectricalcontractor.com or PHelectric.net")
+    forge = f'<p class="forge">{html.escape(FORGE_LINE)}</p>' if FORGE_LINE else ""
+    domain = html.escape(DOMAIN) if DOMAIN else "your current domain"
+    strengths = "\n".join(f"          <li><b>{html.escape(a)}</b><span>{html.escape(b)}</span></li>" for a, b in STRENGTHS)
+    # Everything still open, in one place (Tim, 6 Nov 2026).
+    ours = [t for v, t in ((FORGE_LINE, "The one-line promise at the top of this page."),
+                           (DOMAIN, "Which domain you keep: phelectricalcontractor.com or PHelectric.net."),
+                           (LAUNCH, "Your launch date, counted from the deposit.")) if not v]
 
     return f"""<!doctype html>
 <html lang="en">
@@ -498,11 +558,27 @@ def proposal():
 
   <header>
     <div class="wrap">
-      <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
-      <p class="forge">{forge}</p>
-      <p class="tagline">Not a brochure. A website that brings in work.</p>
-      <h1>Turn the buyers who look you up into bid invitations.</h1>
-      <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
+      <div class="cover">
+        <div>
+          <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
+          <p class="forfirm">Website proposal for {html.escape(LEGAL_NAME)}</p>
+          {forge}
+          <p class="tagline">Not a brochure. A website that brings in work.</p>
+          <h1>Turn the buyers who look you up into bid invitations.</h1>
+          <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
+        </div>
+        <aside class="glance" aria-label="Proposal at a glance">
+          <h2>At a glance</h2>
+          <dl>
+            <div><dt>Prepared for</dt><dd>{html.escape(LEGAL_NAME)}</dd></div>
+            <div><dt>Prepared by</dt><dd>Tim Regan, AI Rocket</dd></div>
+            <div><dt>Scope</dt><dd>An {len(PAGES)}-page website, plus a monthly plan that keeps it current</dd></div>
+            <div><dt>Build</dt><dd><b>{money(BUILD)}</b><br>{money(DEPOSIT)} at signing, {money(BUILD - DEPOSIT)} at launch</dd></div>
+            <div><dt>Monthly</dt><dd><b>{money(MONTHLY)}</b> a month, from launch day</dd></div>
+            <div><dt>Next step</dt><dd><a href="#accept">Sign the agreement and pay the deposit →</a></dd></div>
+          </dl>
+        </aside>
+      </div>
       <figure class="shot">
         <div class="frame"><img src="site-home.jpg" alt="The new PH Electric home page on a computer" width="1440" height="900"></div>
         <figcaption>Your new home page, as a general contractor sees it on a computer. The team photo at the top is AI-made, a stand-in until we have your own photos.</figcaption>
@@ -514,6 +590,17 @@ def proposal():
       </div>
     </div>
   </header>
+
+  <section class="strengths" data-slide>
+    <div class="wrap">
+      <p class="eyebrow">What your new site leads with</p>
+      <h2>Why buyers can trust PH Electric</h2>
+      <ul>
+{strengths}
+      </ul>
+      <p class="note" style="color:var(--muted)">From phelectricalcontractor.com, checked {CHECKED}.</p>
+    </div>
+  </section>
 
   <section class="findings" id="findings" data-slide>
     <div class="wrap">
@@ -703,12 +790,16 @@ def proposal():
 
     <section data-slide>
       <div class="wrap">
-        <p class="eyebrow">What we need from you</p>
-        <h2>{len(NEEDS)} things only you can confirm</h2>
-        <p class="lead">Nothing goes on your real site until you confirm it.</p>
-        <ul style="font-size:18px;max-width:46rem">
+        <p class="eyebrow">Before launch</p>
+        <h2>Still to confirm</h2>
+        <p class="lead">Nothing goes on your real site until it is confirmed.</p>
+        <div class="confirm">
+          <p class="h">From you:</p>
+          <ul>
 {ul(NEEDS)}
-        </ul>
+          </ul>
+          {('<p class="h">To agree together:</p><ul>' + chr(10).join(f'<li>{html.escape(t)}</li>' for t in ours) + '</ul>') if ours else ''}
+        </div>
         <div class="card">
           <img class="logo" src="airocket-logo.jpg" alt="AI Rocket" width="600" height="558">
           <img class="tim" src="tim-regan.jpg" alt="Tim Regan, founder of AI Rocket" width="400" height="400">
