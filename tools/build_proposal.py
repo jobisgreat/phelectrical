@@ -296,8 +296,6 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .replay{margin-left:auto;background:transparent;border:1px solid rgba(242,245,247,.35);color:#f2f5f7;border-radius:0;padding:4px 12px;font-weight:500;font-size:13px;cursor:pointer}
 .replay:hover{background:rgba(255,255,255,.08)}
 @media(max-width:640px){.seoplot .beam text{display:none} .seoplot .mo{font-size:44px}}
-.seoplot .xhair{stroke:#f2f5f7;stroke-opacity:.5;stroke-width:1}
-.seoplot svg{cursor:crosshair;touch-action:pan-y}
 @media (prefers-reduced-motion:reduce){.seoplot .pulse{animation:none;opacity:0}}
 .ylab{position:absolute;left:0;font-size:13px;color:rgba(242,245,247,.7)} .ylab.top{top:0} .ylab.bot{bottom:44px}
 .xlabs{position:relative;height:22px;font-size:13px;color:rgba(242,245,247,.7)} .xlabs span{position:absolute;top:2px;white-space:nowrap}
@@ -420,10 +418,9 @@ SEO_CHART = """
               <circle id="seoPulse" r="9" class="pulse"/><circle id="seoDB" r="8" class="dotB"/>
               <text id="seoLB0" class="endl b" x="12" y="144">Site That Climbs</text><text id="seoLB" class="endl b">Site That Climbs</text><text id="seoLA" class="endl a">Falling</text>
               <text id="seoMo" class="mo" x="22" y="48">Launch</text>
-              <line id="seoX" class="xhair" y1="12" y2="252" opacity="0"/>
             </svg>
             <div class="xlabs" aria-hidden="true"><span style="left:0.6%">Launch</span><span class="mid" style="left:21.6%;transform:translateX(-50%)">3 mo</span><span style="left:42.5%;transform:translateX(-50%)">6 mo</span><span class="mid" style="left:63.4%;transform:translateX(-50%)">9 mo</span><span style="left:84.4%;transform:translateX(-50%)">12 mo</span></div>
-            <p class="seocap">How easily nearby buyers find you (illustration). Hover or tap to step through the year.</p>
+            <p class="seocap">How easily nearby buyers find you (illustration).</p>
           </div>
           <div class="seonow"><p class="b"><b id="seoM1">Month 12</b> · Kept current: <span id="seoT1">12 monthly rounds so far, keeping up with AI scans that never stop.</span></p><p class="a"><b id="seoM2">Month 12</b> · Left alone: <span id="seoT2">No changes since launch. AI keeps scanning, so it slips a little more every month.</span></p></div>
           <p class="seonote">Illustration of the usual pattern, not a forecast. No real numbers on the chart. AI scans run all the time; the marks show the pattern, not exact dates.</p>
@@ -432,7 +429,7 @@ SEO_CHART = """
 """
 
 SEO_JS = """
-    // SEO chart (from the DeVellis Zrein proposal, 27 Oct 2026): draws on a loop while on screen; hover or tap to scrub; holds still for reduced motion.
+    // SEO chart (from the DeVellis Zrein proposal, 27 Oct 2026): draws on a loop while on screen; holds still for reduced motion.
     (function () {
       // AI scans never stop (Tim, 28 Oct 2026): a mark every month, a scanning beam that rides the front of the gold line, and the left-alone line slips every month.
       var A = [30, 28.5, 26.5, 24, 21.5, 19, 16.5, 14, 11.5, 9, 6, 3, 0], B = [30, 33, 36, 40, 44, 47, 51, 55, 58, 62, 66, 69, 73], N = 12, UPD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -491,17 +488,10 @@ SEO_JS = """
       }
       draw(N);
       var reduce = !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var raf = 0, visible = false, scrubbing = false;
+      var raf = 0, visible = false; // plays on its own; no hover or drag (Tim, 6 Nov 2026)
       function loop() { cancelAnimationFrame(raf); var start = performance.now(); (function step(now) { var f = Math.min(1, ((now - start) % 19000) / 14000), e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2; draw(e * N); raf = requestAnimationFrame(step); })(start); }
-      if (!reduce) new IntersectionObserver(function (es) { visible = es.some(function (e) { return e.isIntersecting; }); cancelAnimationFrame(raf); if (visible && !scrubbing) loop(); }, { threshold: 0.3 }).observe(box);
-      function scrub(e) {
-        var r = svg.getBoundingClientRect(), vx = ((e.clientX - r.left) / r.width) * 640, t = Math.max(0, Math.min(N, ((vx - 4) / 536) * N));
-        scrubbing = true; cancelAnimationFrame(raf); draw(t);
-        var xh = $("seoX"); xh.setAttribute("x1", x(t)); xh.setAttribute("x2", x(t)); xh.setAttribute("opacity", 1);
-      }
-      $("seoReplay").addEventListener("click", function () { scrubbing = false; $("seoX").setAttribute("opacity", 0); if (reduce) { var st = performance.now(); cancelAnimationFrame(raf); (function step(now) { var f = Math.min(1, (now - st) / 14000); draw(f * N); if (f < 1) raf = requestAnimationFrame(step); })(st); } else loop(); });
-      svg.addEventListener("pointermove", scrub); svg.addEventListener("pointerdown", scrub);
-      svg.addEventListener("pointerleave", function () { scrubbing = false; $("seoX").setAttribute("opacity", 0); if (reduce) draw(N); else if (visible) loop(); });
+      if (!reduce) new IntersectionObserver(function (es) { visible = es.some(function (e) { return e.isIntersecting; }); cancelAnimationFrame(raf); if (visible) loop(); }, { threshold: 0.3 }).observe(box);
+      $("seoReplay").addEventListener("click", function () { if (reduce) { var st = performance.now(); cancelAnimationFrame(raf); (function step(now) { var f = Math.min(1, (now - st) / 14000); draw(f * N); if (f < 1) raf = requestAnimationFrame(step); })(st); } else loop(); });
     })();
 """
 
