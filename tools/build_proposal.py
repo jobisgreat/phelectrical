@@ -129,18 +129,16 @@ SOURCES = [
      "https://projectcostestimator.com/blog/construction-company-website-cost-2026", "ProjectCostEstimator, 2026"),
 ]
 
-# Strengths the page leads with (redesign, 6 Nov 2026). Only facts from phelectricalcontractor.com; nothing Tim or PH Electric has not confirmed.
+# Strengths the page leads with (redesign, 6 Nov 2026). From phelectricalcontractor.com, plus four facts Tim confirmed on
+# 6 Nov 2026 ("all claims are correct"): fully insured, own crews, residential work, Greater Boston.
 STRENGTHS = [
-    ("Since 1972", "In business since 1972, from 222 Plaistow Road, Plaistow, NH."),
-    ("Master electrician leadership", "David B. Howard, PE: master electrician and professional engineer, B.S. Electrical Engineering, WPI."),
-    ("In-house engineering", "Design-build delivery, with the professional engineering done in house."),
-    ("Inspected and tested to code", "Fire alarm inspections and testing to NFPA, and crane and hoist inspections aligned with ANSI and OSHA."),
-    ("Safety record", "A strong safety record for more than 40 years, with NH/VT ABC Construction Industry Safety Awards: First Place 2009, Second Place 2011."),
+    ("Since 1972", "In business since 1972, from Plaistow, NH, serving Greater Boston and all of New England."),
+    ("Master licensed, fully insured", "Led by David B. Howard, PE: master electrician and professional engineer, B.S. Electrical Engineering, WPI. Fully insured."),
+    ("Our own crews", "Work done by PH Electric's own crews, with in-house engineering for design-build."),
+    ("Commercial and residential", "Commercial, industrial, government and residential electrical work."),
+    ("Code-compliant, safety first", "Fire alarm testing to NFPA, crane and hoist inspections aligned with ANSI and OSHA, and NH/VT ABC Construction Industry Safety Awards (First Place 2009, Second Place 2011)."),
     ("Named work across New England", "VA Medical Centers in West Roxbury and West Haven, UMass Lowell, Tufts University, Boston Scientific and 20 more named projects."),
 ]
-
-# Claims Tim asked for on 6 Nov 2026 that no source supports yet. They stay off the page until PH Electric confirms them.
-UNCONFIRMED_CLAIMS = "fully insured, your own crews, residential work, and Greater Boston as a named service area"
 
 NEEDS = [
     "Answers to the yellow “To confirm with owner” items on the preview: market groupings, project scopes, licenses, bonding, insurance, EMR, bid turnaround and estimating contact. Nothing goes live until you confirm it.",
@@ -149,7 +147,6 @@ NEEDS = [
     "The email address your request-for-quote form should go to.",
     "A login for your domain (or the name of whoever manages it), so we can point it at the new site without touching your company email.",
     "Add AI Rocket (tim@airocket.pro) as a manager on your Google listing, so we can clean it up and measure your before-and-after numbers.",
-    f"Whether these can go on your site: {UNCONFIRMED_CLAIMS}.",
 ]
 
 
@@ -588,7 +585,7 @@ def proposal():
       <ul>
 {strengths}
       </ul>
-      <p class="note" style="color:var(--muted)">From phelectricalcontractor.com, checked {CHECKED}.</p>
+      <p class="note" style="color:var(--muted)">Sources: phelectricalcontractor.com (checked {CHECKED}) and Tim Regan, AI Rocket.</p>
     </div>
   </section>
 
