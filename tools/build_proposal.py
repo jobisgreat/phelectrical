@@ -668,8 +668,8 @@ def proposal():
         </ul></div>
         <p class="proof"><b>The proof:</b> we save your Google numbers before the build and compare them at 30, 60 and 90 days after launch.</p>
         <div class="dash">
-          <p class="syshead">Your owner dashboard: the numbers, any time</p>
-          <p class="lead">A private page on your website that only you can open. It shows how many people visited, which pages they read, whether they used a phone or a computer, and how many reached your key pages (For contractors, Contact and the quote form). It updates every few minutes, with no reports to wait for.</p>
+          <p class="syshead">You track every job from bid to closeout. Now track your website the same way.</p>
+          <p class="lead">Your owner dashboard is a private page on your website that only you can open. It shows how many people visited, which pages they read, whether they used a phone or a computer, and how many reached your key pages (For contractors, Contact and the quote form). It updates every few minutes, with no reports to wait for.</p>
           <figure class="shot">
             <div class="frame"><a href="{SITE}/stats/sample/" data-site="/stats/sample/"><img src="owner-dashboard.jpg" alt="Example owner dashboard for PH Electrical with sample numbers" width="1440" height="892" loading="lazy"></a></div>
             <figcaption>An example filled with sample numbers, not real visits. Your real dashboard starts counting on launch day. The example also shows phone taps; counting those takes extra tracking on the call buttons.</figcaption>
