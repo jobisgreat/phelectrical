@@ -556,7 +556,7 @@ def proposal():
           <p class="forfirm">Website proposal for {html.escape(LEGAL_NAME)}</p>
           {forge}
           <p class="tagline">You know what’s working on the job. Know what’s working on the site.</p>
-          <h1>From bid to closeout, you track the work. Track your visitors who become the next bid.</h1>
+          <h1>From bid to closeout, you track the work. We track your visitors who become the next bid.</h1>
           <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
         </div>
         <aside class="glance" aria-label="Proposal at a glance">
