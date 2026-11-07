@@ -193,7 +193,8 @@
     .hero.hero-photo { padding: 0 0 calc(var(--u) * 4); }
     .hero-band { display: grid; grid-template-columns: 1.5fr 1fr; gap: calc(var(--u) * 6); align-items: end; padding-top: calc(var(--u) * 4); padding-bottom: calc(var(--u) * 4); }
     .hero-photo h1 { font-size: clamp(2.25rem, 3vw, 3.25rem); max-width: none; }
-    .hero-figure { aspect-ratio: 1600 / 772; }
+    .hero-figure { aspect-ratio: auto; height: clamp(320px, 44vh, 618px); } /* headline and buttons above the fold on laptops */
+    .hero-figure img { object-position: 50% 78%; }
     .hero-photo .hero-lede { margin-top: 0; }
     section { padding: calc(var(--u) * 12) 0; }
     .caps { grid-template-columns: repeat(3, 1fr); }
@@ -277,3 +278,17 @@ input[type="file"]::file-selector-button { margin-right: var(--u); border: 0; bo
 .todo, .todo.page-flag, .todo.proj-note, .todo.preview-note { display: none !important; }
 /* Release 2026-10-30: hide photo slots that only held an owner note (markup kept) */
 .photo-slot { display: none !important; }
+
+/* Polish, 6 Nov 2026 */
+/* phones: hide the bottom call bar while the page's own Call button is on screen (site.js) */
+.call-bar { transition: transform .2s ease; }
+.call-bar.is-hidden { transform: translateY(110%); }
+@media (prefers-reduced-motion: reduce) { .call-bar { transition: none; } }
+/* phones: fade the right edge of the menu so it reads as scrollable */
+@media (max-width: 959px) {
+  .site-nav { position: relative; }
+  .site-nav::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 40px; pointer-events: none; background: linear-gradient(to right, rgba(15,22,48,0), var(--base)); }
+  /* bigger tap targets in the footer menu */
+  .foot-map ul { gap: 0; }
+  .foot-map a { display: inline-block; padding: 10px 0; }
+}

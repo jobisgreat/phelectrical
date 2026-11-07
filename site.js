@@ -13,3 +13,12 @@
     });
   })();
 
+
+  (function () {
+    var bar = document.querySelector(".call-bar");
+    var own = document.querySelector("main a.btn[href^='tel:']");
+    if (!bar || !own || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle("is-hidden", entries[0].isIntersecting);
+    }).observe(own);
+  })();
