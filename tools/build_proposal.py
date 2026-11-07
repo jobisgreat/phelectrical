@@ -59,6 +59,7 @@ MONTHLY_SCOPE = [
     "New projects added to your Projects page when you send the photos.",
     "An automatic test every day that your request-for-quote form still reaches you, with an alert to us if it fails.",
     "Keyword updates every month: we check what clients search for and what changed in Google's latest updates, then adjust your page titles, descriptions and wording to match.",
+    "A private owner dashboard on your website: visitors, most visited pages, phone or computer, and key page hits, updated every few minutes.",
 ]
 
 # Tim's wording for the chart section's "kept current" column only (28 Oct 2026). The price box and agreement keep MONTHLY_SCOPE.
@@ -68,6 +69,7 @@ CHART_KEPT = [
     "New projects added to the Projects page when you send the photos.",
     "Daily automatic test that the request-for-quote form still reaches you, with an alert to us if it fails.",
     "Keyword and wording updates every month. AI scans never stop, so we check what clients are searching for and adjust titles, descriptions, and copy to match.",
+    "Your own owner dashboard, so you see the numbers any time: visitors, top pages and key page hits.",
 ]
 
 BUILD_SCOPE = [
@@ -269,6 +271,8 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .keep { margin: 22px 0 0; max-width: 46rem; } .keep p { margin: 0; font-weight: 700; }
 .keep ul { margin: 6px 0 0; padding-left: 20px; } .keep li { margin: 4px 0; }
 .proof { margin: 16px 0 0; max-width: 46rem; }
+.dash { margin-top: 34px; }
+.dash .lead { max-width: 46rem; }
 .seochart{margin-top:28px;background:var(--ink);color:var(--onink);border-top:4px solid var(--gold);padding:16px;}
 .seohead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
 .seotitle{font-family:var(--display);font-weight:800;font-size:23px;color:#f0b13c;margin:0}
@@ -663,6 +667,15 @@ def proposal():
 {ul(MONTHLY_SCOPE)}
         </ul></div>
         <p class="proof"><b>The proof:</b> we save your Google numbers before the build and compare them at 30, 60 and 90 days after launch.</p>
+        <div class="dash">
+          <p class="syshead">Your owner dashboard: the numbers, any time</p>
+          <p class="lead">A private page on your website that only you can open. It shows how many people visited, which pages they read, whether they used a phone or a computer, and how many reached your key pages (For contractors, Contact and the quote form). It updates every few minutes, with no reports to wait for.</p>
+          <figure class="shot">
+            <div class="frame"><a href="{SITE}/stats/sample/" data-site="/stats/sample/"><img src="owner-dashboard.jpg" alt="Example owner dashboard for PH Electrical with sample numbers" width="1440" height="892" loading="lazy"></a></div>
+            <figcaption>An example filled with sample numbers, not real visits. Your real dashboard starts counting on launch day. The example also shows phone taps; counting those takes extra tracking on the call buttons.</figcaption>
+          </figure>
+          <div class="btns"><a class="btn outline" href="{SITE}/stats/sample/" data-site="/stats/sample/">Open the example dashboard →</a></div>
+        </div>
         <p class="ghead">Google changes the rules every day. Your site should keep up.</p>
         <ul class="gstats">
           <li><b>4,000+</b><span>improvements Google made to Search in 2023 alone.</span><a href="https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/rigorous-testing/">Google, How Search Works</a></li>
