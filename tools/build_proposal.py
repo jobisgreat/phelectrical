@@ -527,11 +527,11 @@ def proposal():
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PH Electric · Not a brochure. A website that brings in work.</title>
+  <title>PH Electric · You know what’s working on the job. Know what’s working on the site.</title>
   <meta name="description" content="The {gap_n} gaps we found on phelectricalcontractor.com, our fix for each, and our proposal.">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PH Electric · Not a brochure. A website that brings in work.">
+  <meta property="og:title" content="PH Electric · You know what’s working on the job. Know what’s working on the site.">
   <meta property="og:description" content="The {gap_n} gaps we found and how we fix each one. Your new website is built and ready to see.">
   <meta property="og:image" content="https://{PROPOSAL_HOST}/proposal/share.jpg">
   <meta property="og:image:width" content="1120">
@@ -555,8 +555,8 @@ def proposal():
           <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
           <p class="forfirm">Website proposal for {html.escape(LEGAL_NAME)}</p>
           {forge}
-          <p class="tagline">Not a brochure. A website that brings in work.</p>
-          <h1>Turn the buyers who look you up into bid invitations.</h1>
+          <p class="tagline">You know what’s working on the job. Know what’s working on the site.</p>
+          <h1>From bid to closeout, you track the work. Track your visitors who become the next bid.</h1>
           <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
         </div>
         <aside class="glance" aria-label="Proposal at a glance">
