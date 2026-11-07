@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>PH Electrical · Sample stats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0e11; --panel:#15171c; --panel-2:#1b1e25; --line:#2a2e37;
+    --ink:#f5f6f8; --muted:#9aa1ad; --faint:#6b7280;
+    --amber:#f6b23d; --amber-bright:#ffc24b; --amber-dim:rgba(246,178,61,.14);
+    --a1:rgba(246,178,61,.35); --a2:rgba(246,178,61,.65); --a3:#f6b23d;
+    --up:#5fd08a;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px; line-height:1.5; letter-spacing:-.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:clamp(16px,4vw,48px)}
+  .num{font-variant-numeric:tabular-nums lining-nums}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  /* ---- sample strip (always visible) ---- */
+  .sample-strip{
+    position:sticky; top:0; z-index:5;
+    background:repeating-linear-gradient(135deg,#f6b23d 0 14px,#e9a52f 14px 28px);
+    color:#1a1507; text-align:center; font-weight:700; letter-spacing:.08em;
+    font-size:clamp(13px,2.4vw,16px); padding:9px 16px; text-transform:uppercase;
+    box-shadow:0 2px 0 rgba(0,0,0,.35);
+  }
+  .sample-strip span{font-weight:500; letter-spacing:.02em; text-transform:none; opacity:.85}
+
+  /* ---- top bar ---- */
+  .top{display:flex; align-items:flex-end; justify-content:space-between; gap:16px 20px; flex-wrap:wrap; margin-bottom:8px}
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--amber)}
+  h1{font-size:clamp(26px,4vw,38px); font-weight:700; margin:.15em 0 0; letter-spacing:-.02em; line-height:1.1}
+  .sub{color:var(--muted); font-size:14px; margin-top:6px}
+  .stamp{color:var(--faint); font-size:13px}
+
+  .banner{
+    margin:22px 0 0; padding:16px 18px; border-radius:var(--radius);
+    background:var(--amber-dim); border:1px solid rgba(246,178,61,.45);
+    font-size:14.5px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .banner b{color:var(--amber-bright)}
+  .banner svg{flex:none; width:18px; height:18px; margin-top:2px; color:var(--amber)}
+
+  /* ---- grid ---- */
+  .grid{display:grid; gap:18px; margin-top:22px}
+  .row{display:grid; gap:18px; min-width:0}
+  .row > *{min-width:0}
+  @media(min-width:760px){ .row.three{grid-template-columns:repeat(3,1fr)} .row.two{grid-template-columns:1fr 1fr} }
+  @media(min-width:900px){ .row.split{grid-template-columns:1.35fr 1fr} .row.wide{grid-template-columns:1fr 2fr} }
+
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; position:relative}
+  .card h2{font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 16px; display:flex; justify-content:space-between; gap:10px}
+  .tag{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em; color:var(--amber); border:1px solid rgba(246,178,61,.4); border-radius:4px; padding:1px 6px; height:fit-content; white-space:nowrap}
+
+  /* ---- hero numbers ---- */
+  .hero .big{font-size:clamp(46px,7vw,68px); font-weight:700; line-height:.95; letter-spacing:-.03em}
+  .hero .label{color:var(--muted); font-size:14px; margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:baseline}
+  .delta{font-weight:600; font-size:14px; color:var(--up)}
+  .delta.base{color:var(--faint); font-weight:500}
+  .hero.current{border-color:rgba(246,178,61,.55); box-shadow:0 0 0 1px rgba(246,178,61,.15), 0 10px 40px -20px rgba(246,178,61,.45)}
+  .hero .spark{margin-top:18px}
+
+  /* ---- bars ---- */
+  .bars{display:flex; align-items:flex-end; gap:2px; height:150px; position:relative}
+  .bars.spark{height:42px}
+  .bar{flex:1; min-width:1px; background:var(--amber); border-radius:2px 2px 0 0; height:var(--h,0%); opacity:.9}
+  .bar.wkend{opacity:.45}
+  .bars.spark .bar{opacity:.85}
+  .avg{position:absolute; left:0; right:0; border-top:1px dashed rgba(245,246,248,.45); pointer-events:none}
+  .avg span{position:absolute; right:0; top:-19px; font-size:11px; color:var(--muted); background:var(--panel); padding:0 4px}
+  .axis{display:flex; color:var(--faint); font-size:11px; margin-top:8px}
+  .axis span{flex:var(--f,1); border-left:1px solid var(--line); padding-left:6px}
+  .axis span:first-child{border-left:0; padding-left:0}
+
+  /* month columns */
+  .months{display:flex; align-items:flex-end; gap:clamp(14px,4vw,34px); height:190px; padding-top:26px}
+  .mcol{flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end}
+  .mcol .v{font-weight:700; font-size:18px; margin-bottom:6px}
+  .mcol .b{width:100%; max-width:84px; height:var(--h); border-radius:6px 6px 0 0; background:var(--c,var(--amber))}
+  .mcol .m{color:var(--muted); font-size:13px; margin-top:8px}
+
+  /* ---- horizontal bars ---- */
+  .hbars{display:flex; flex-direction:column; gap:13px}
+  .hbar .meta{display:flex; justify-content:space-between; gap:12px; font-size:14px; margin-bottom:6px}
+  .hbar .path{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .hbar .path small{color:var(--faint); font-size:12px; margin-left:6px}
+  .hbar .val{color:var(--muted); flex:none; font-weight:600}
+  .track{height:9px; background:var(--panel-2); border-radius:5px; overflow:hidden}
+  .fill{height:100%; background:var(--amber); border-radius:5px; width:var(--w,0%)}
+
+  /* grouped key-page bars */
+  .kgroup{display:flex; flex-direction:column; gap:18px}
+  .krow .meta{display:flex; justify-content:space-between; gap:10px; font-size:14px; margin-bottom:7px}
+  .krow .meta .up{color:var(--up); font-weight:600; white-space:nowrap}
+  .ktracks{display:flex; flex-direction:column; gap:4px}
+  .kt{display:grid; grid-template-columns:34px 1fr 38px; align-items:center; gap:8px; font-size:12px; color:var(--faint)}
+  .kt .track{height:8px}
+  .kt .n{text-align:right; color:var(--muted); font-weight:600}
+  .kt.m1 .fill{background:var(--a1)} .kt.m2 .fill{background:var(--a2)} .kt.m3 .fill{background:var(--a3)}
+
+  /* ---- donut ---- */
+  .donut-wrap{display:flex; gap:24px; align-items:center; flex-wrap:wrap}
+  .donut{width:156px; height:156px; flex:none; border-radius:50%; position:relative}
+  .donut::after{content:""; position:absolute; inset:27px; background:var(--panel); border-radius:50%}
+  .donut .center{position:absolute; inset:0; display:grid; place-content:center; text-align:center; z-index:1}
+  .donut .center .n{font-size:28px; font-weight:700; line-height:1.05}
+  .donut .center .l{font-size:11px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase}
+  .legend{display:flex; flex-direction:column; gap:10px; font-size:14px; flex:1; min-width:150px}
+  .legend .li{display:flex; align-items:center; gap:10px}
+  .legend .dot{width:10px; height:10px; border-radius:3px; flex:none}
+  .legend .lv{margin-left:auto; color:var(--muted); font-weight:600}
+  .legend .pct{color:var(--faint); font-weight:500; margin-left:6px; min-width:34px; text-align:right}
+  .note{color:var(--faint); font-size:13px; margin-top:14px}
+  .keylegend{display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin:-4px 0 14px}
+  .keylegend i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+
+  .glance{display:grid; gap:12px 28px; margin:0; padding:0; list-style:none}
+  @media(min-width:760px){ .glance{grid-template-columns:1fr 1fr} }
+  .glance li{display:flex; gap:12px; align-items:flex-start; font-size:15px; line-height:1.45}
+  .glance li b{color:var(--amber-bright); font-weight:700}
+  .glance .ic{flex:none; width:26px; height:26px; border-radius:7px; background:var(--amber-dim); color:var(--amber); display:grid; place-content:center; font-size:13px; font-weight:700; margin-top:-1px}
+  .rate{display:flex; justify-content:space-between; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid var(--line)}
+  .rate div{flex:1; text-align:center}
+  .rate .rn{font-size:20px; font-weight:700}
+  .rate .rl{font-size:12px; color:var(--faint)}
+  .rate-h{font-size:12px; color:var(--muted); margin-top:14px; letter-spacing:.02em}
+  .seg{position:absolute; border-top:2px dashed rgba(245,246,248,.7); pointer-events:none}
+  .chart-key{display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin:-4px 0 12px}
+  .chart-key i{display:inline-block; width:14px; border-top:2px dashed rgba(245,246,248,.7); margin-right:6px; vertical-align:3px}
+  .mini3{display:flex; align-items:flex-end; gap:6px; height:42px}
+  .mini3 div{flex:1; border-radius:3px 3px 0 0; height:var(--h); background:var(--c)}
+  @media(max-width:560px){ .hbar .path small{display:none} .avg span{display:none} }
+  .calls{display:grid; gap:22px; align-items:center}
+  @media(min-width:860px){ .calls{grid-template-columns:1fr 1.1fr 1.4fr} }
+  .calls .big{font-size:clamp(46px,7vw,68px); font-weight:700; line-height:.95; letter-spacing:-.03em}
+  .calls .label{color:var(--muted); font-size:14px; margin-top:10px}
+  .calls .months{height:150px; padding-top:22px}
+  .calls .sub-h{font-size:12px; color:var(--muted); margin-bottom:12px}
+  .phone-ico{display:inline-grid; place-content:center; width:30px; height:30px; border-radius:8px; background:var(--amber-dim); color:var(--amber); margin-bottom:12px}
+  .phone-ico svg{width:17px; height:17px}
+  .foot{margin-top:28px; color:var(--faint); font-size:12.5px; text-align:center; line-height:1.6}
+  .foot b{color:var(--amber)}
+  .back{display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; padding:10px 16px; border:1px solid rgba(246,178,61,.55); border-radius:8px; color:var(--amber-bright); font-weight:600; font-size:15px; text-decoration:none}
+  .back:hover,.back:focus-visible{background:var(--amber-dim)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" id="back" href="/">&larr; Back to the website</a>
+  <script>(function(){try{var q=new URLSearchParams(location.search),b=document.getElementById("back"),code=q.get("p");
+    if(q.get("from")==="proposal"){b.href="/proposal/"+(code?"?p="+encodeURIComponent(code):"")+"#seo";b.innerHTML="&larr; Back to your proposal";}
+    else if(code){b.href="/?p="+encodeURIComponent(code);}}catch(e){}})();</script>
+  <div class="top">
+    <div>
+      <div class="eyebrow">Owner dashboard · example</div>
+      <h1>PH Electrical</h1>
+      <div class="sub">Website visitors · last 3 months (August–October 2026)</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <!-- headline numbers -->
+    <div class="row three" id="heroes"></div>
+
+    <div class="row wide">
+      <section class="card"><h2>Visitors by month</h2><div id="months"></div></section>
+      <section class="card"><h2>Daily visitors · 92 days</h2><div id="daily"></div></section>
+    </div>
+
+    <div class="row split">
+      <section class="card"><h2>Most visited pages · 3 months</h2><div id="pages"></div></section>
+      <section class="card"><h2>Devices · 3 months</h2><div id="devices"></div></section>
+    </div>
+
+    <section class="card"><h2>Calls from the website · taps on the phone number</h2><div id="calls"></div></section>
+
+    <div class="row split">
+      <section class="card"><h2>Key page hits by month</h2><div id="keybars"></div></section>
+      <section class="card"><h2>Key page hits · October</h2><div id="keydonut"></div></section>
+    </div>
+
+    <section class="card"><h2>At a glance · what changed</h2><ul class="glance" id="glance"></ul></section>
+  </div>
+
+  <div class="foot">
+    <b>SAMPLE DATA — not live visits.</b> Example page for illustration only · Private owner view · Not linked from the public site<br>
+    Days are counted in UTC (they roll over at 7 or 8 pm Boston time).
+  </div>
+</main>
+
+<script>
+(function(){
+  /* ===== SAMPLE DATA — invented for illustration, not real visits ===== */
+  var MONTHS = [
+    {name:"August",  short:"Aug", visitors:486, start:0,  days:31},
+    {name:"September",short:"Sep", visitors:652, start:31, days:30},
+    {name:"October", short:"Oct", visitors:838, start:61, days:31}
+  ];
+  // Daily visitors, Aug 1 – Oct 31 2026 (weekends lower, as for a B2B site). Sums match the monthly totals.
+  var DAILY = [7,6,20,17,20,18,17,7,6,20,16,17,19,23,6,7,21,24,21,20,24,6,9,19,18,18,19,24,7,8,22,25,25,21,21,8,10,25,24,27,25,24,11,11,23,27,27,30,29,9,12,23,26,30,23,27,8,11,30,28,32,30,34,12,12,31,36,37,32,34,10,13,34,39,37,30,31,13,10,33,29,28,28,37,11,12,33,39,29,34,35,15];
+  var START = Date.UTC(2026,7,1);
+  var PAGES = [ // page views over the 3 months (real page names and paths on the live site)
+    {name:"Home", path:"/", count:1690},
+    {name:"Commercial / Industrial Electrical Service", path:"/commercial-industrial-electrical.html", count:742},
+    {name:"Projects", path:"/projects.html", count:588},
+    {name:"Government Electrical Contracting", path:"/government-contracting.html", count:431},
+    {name:"Fire Alarm Systems", path:"/fire-alarm.html", count:322},
+    {name:"For contractors", path:"/contractors.html", count:263},
+    {name:"Crane &amp; Hoist Inspections and Services", path:"/crane-hoist.html", count:236}
+  ];
+  var DEVICES = [ // trade business: more phones than computers (52% / 41% / 7%)
+    {name:"Phone",    count:1028, color:"#f6b23d"},
+    {name:"Computer", count:810,  color:"#c98a2a"},
+    {name:"Tablet",   count:138,  color:"#5c5148"}
+  ];
+  var KEY = [ // [Aug, Sep, Oct]
+    {name:"For contractors page", path:"/contractors.html", m:[58,84,121]},
+    {name:"Contact page", path:"/contact.html", m:[31,45,64]},
+    {name:"“Request a quote” button clicks", path:"#rfq", m:[14,23,38]}
+  ];
+  var CALLS = { m:[38,57,86], // taps on 603-382-3182, by month
+    octWhere:[
+      {name:"Call bar at the bottom of phone screens", count:41},
+      {name:"“Call 603-382-3182” buttons (top of every page)", count:22},
+      {name:"Big number in the “Request a quote” section", count:13},
+      {name:"Phone number in the footer and on the Contact page", count:10}
+    ]};
+  /* ===================================================================== */
+
+  var $ = function(id){ return document.getElementById(id); };
+  var nf = function(n){ return n.toLocaleString("en-US"); };
+  var pct = function(a,b){ return Math.round((b-a)/a*100); };
+  var sum = function(a){ return a.reduce(function(t,x){return t+x;},0); };
+
+  // headline numbers
+  var octM=MONTHS[2], sepM=MONTHS[1], mxD=Math.max.apply(null,DAILY);
+  var sparkOf=function(arr){return '<div class="bars spark" aria-hidden="true">'+arr.map(function(v){return '<div class="bar" style="--h:'+Math.max(6,Math.round(v/mxD*100))+'%"></div>';}).join("")+'</div>';};
+  var keyBy=[0,1,2].map(function(i){return sum(KEY.map(function(k){return k.m[i];}));});
+  var tot3=sum(DAILY);
+  $("heroes").innerHTML =
+    '<section class="card hero current"><h2>Visitors · October</h2><div class="big num">'+nf(octM.visitors)+'</div>'+
+      '<div class="label"><span class="delta">▲ '+pct(sepM.visitors,octM.visitors)+'% vs September</span></div><div class="label" style="margin-top:2px">About '+Math.round(octM.visitors/octM.days)+' a day</div>'+
+      '<div class="spark">'+sparkOf(DAILY.slice(octM.start))+'</div></section>'+
+    '<section class="card hero"><h2>Visitors · 3 months</h2><div class="big num">'+nf(tot3)+'</div>'+
+      '<div class="label"><span class="delta">▲ '+pct(MONTHS[0].visitors,octM.visitors)+'% Aug → Oct</span></div><div class="label" style="margin-top:2px">About '+Math.round(tot3/DAILY.length)+' a day</div>'+
+      '<div class="spark">'+sparkOf(DAILY)+'</div></section>'+
+    '<section class="card hero"><h2>Key page hits · October</h2><div class="big num">'+nf(keyBy[2])+'</div>'+
+      '<div class="label"><span class="delta">▲ '+pct(keyBy[1],keyBy[2])+'% vs September</span></div><div class="label" style="margin-top:2px">Contractors, contact and quote requests</div>'+
+      '<div class="spark"><div class="mini3" aria-hidden="true">'+keyBy.map(function(v,i){return '<div style="--h:'+Math.round(v/keyBy[2]*100)+'%;--c:'+["var(--a1)","var(--a2)","var(--a3)"][i]+'"></div>';}).join("")+'</div></div></section>';
+
+  // at a glance
+  var rates=[0,1,2].map(function(i){return Math.round(keyBy[i]/MONTHS[i].visitors*100);});
+  var octDaily=DAILY.slice(octM.start), wk=[0,0], we=[0,0];
+  octDaily.forEach(function(v,i){var wd=new Date(START+(octM.start+i)*864e5).getUTCDay(); if(wd===0||wd===6){we[0]+=v;we[1]++;}else{wk[0]+=v;wk[1]++;}});
+  $("glance").innerHTML = [
+    ['▲','Visitors grew every month: <b>'+MONTHS.map(function(m){return nf(m.visitors);}).join(' → ')+'</b>, up '+pct(MONTHS[0].visitors,octM.visitors)+'% since August.'],
+    ['$','Quote requests nearly tripled (<b>'+KEY[2].m.join(' → ')+'</b>) and calls from the website more than doubled (<b>'+CALLS.m.join(' → ')+'</b>).'],
+    ['★','<b>Commercial / Industrial Electrical Service</b> is the most visited service page, right behind Home.'],
+    ['%','More visitors reach a key page: <b>'+rates[0]+' → '+rates[2]+' per 100 visitors</b>. In October that was about '+Math.round(wk[0]/wk[1])+' visitors a weekday and '+Math.round(we[0]/we[1])+' a weekend day.']
+  ].map(function(x){return '<li><span class="ic">'+x[0]+'</span><span>'+x[1]+'</span></li>';}).join("");
+
+  // month columns
+  var mmax = Math.max.apply(null, MONTHS.map(function(m){return m.visitors;}));
+  var shades = ["var(--a1)","var(--a2)","var(--a3)"];
+  $("months").innerHTML = '<div class="months">'+MONTHS.map(function(m,i){
+    return '<div class="mcol"><div class="v num">'+nf(m.visitors)+'</div><div class="b" style="--h:'+Math.round(m.visitors/mmax*100)+'%;--c:'+shades[i]+'"></div><div class="m">'+m.short+'</div></div>';
+  }).join("")+'</div><div class="rate-h">Key page hits per 100 visitors</div><div class="rate">'+rates.map(function(v,i){return '<div><div class="rn num">'+v+'</div><div class="rl">'+MONTHS[i].short+'</div></div>';}).join("")+'</div>';
+
+  // daily chart
+  var dmax = Math.max.apply(null,DAILY), avg = sum(DAILY)/DAILY.length;
+  var bars = DAILY.map(function(v,i){
+    var dt = new Date(START + i*864e5), wd = dt.getUTCDay();
+    var label = dt.toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"UTC"});
+    return '<div class="bar'+(wd===0||wd===6?' wkend':'')+'" style="--h:'+Math.max(2,Math.round(v/dmax*100))+'%" title="'+label+': '+v+' visitors"></div>';
+  }).join("");
+  $("daily").innerHTML = '<div class="chart-key"><span><i></i>Monthly average: '+MONTHS.map(function(m){return Math.round(m.visitors/m.days);}).join(' → ')+' a day</span></div><div class="bars" role="img" aria-label="Daily visitors rising from about 16 a day in August to about 27 a day in October">'+bars+
+    MONTHS.map(function(m){var a=sum(DAILY.slice(m.start,m.start+m.days))/m.days; return '<div class="seg" style="left:'+(m.start/DAILY.length*100)+'%;width:'+(m.days/DAILY.length*100)+'%;bottom:'+(a/dmax*100)+'%" title="'+m.name+' average: '+Math.round(a)+' a day"></div>';}).join("")+'</div>'+
+    '<div class="axis">'+MONTHS.map(function(m){return '<span style="--f:'+m.days+'">'+m.short+'</span>';}).join("")+'</div>'+
+    '<div class="note">Faded bars are weekends. Contractors and estimators visit mostly on weekdays.</div>';
+
+  // top pages
+  var pmax = PAGES[0].count;
+  $("pages").innerHTML = '<div class="hbars">'+PAGES.map(function(p){
+    return '<div class="hbar"><div class="meta"><span class="path">'+p.name+'<small class="mono">'+p.path+'</small></span><span class="val num">'+nf(p.count)+'</span></div><div class="track"><div class="fill" style="--w:'+Math.round(p.count/pmax*100)+'%"></div></div></div>';
+  }).join("")+'</div><div class="note">Page views, most visited first.</div>';
+
+  // donut helper
+  function donut(items, centerN, centerL){
+    var total = sum(items.map(function(d){return d.count;})), acc=0;
+    var stops = items.map(function(d){ var f=acc/total*100; acc+=d.count; return d.color+" "+f+"% "+(acc/total*100)+"%"; });
+    var legend = items.map(function(d){
+      return '<div class="li"><span class="dot" style="background:'+d.color+'"></span>'+d.name+'<span class="lv num">'+nf(d.count)+'</span><span class="pct num">'+Math.round(d.count/total*100)+'%</span></div>';
+    }).join("");
+    return '<div class="donut-wrap"><div class="donut" style="background:conic-gradient('+stops.join(",")+')"><div class="center"><div class="n num">'+centerN+'</div><div class="l">'+centerL+'</div></div></div><div class="legend">'+legend+'</div></div>';
+  }
+  var dtot = sum(DEVICES.map(function(d){return d.count;}));
+  $("devices").innerHTML = donut(DEVICES, nf(dtot), "visitors") + '<div class="note">Mostly phones, as usual for a trade business. Computers are mostly office estimators.</div>';
+
+  // calls
+  var cmax=Math.max.apply(null,CALLS.m), wmax=CALLS.octWhere[0].count;
+  $("calls").innerHTML = '<div class="calls">'+
+    '<div><div class="phone-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>'+
+      '<div class="big num">'+CALLS.m[2]+'</div><div class="label">calls started in October</div>'+
+      '<div class="label" style="margin-top:4px"><span class="delta">▲ '+pct(CALLS.m[1],CALLS.m[2])+'% vs September</span></div>'+
+      '<div class="label" style="margin-top:4px">'+sum(CALLS.m)+' in 3 months · about '+Math.round(CALLS.m[2]/4.4)+' a week in October</div></div>'+
+    '<div><div class="sub-h">Calls by month</div><div class="months">'+CALLS.m.map(function(v,i){return '<div class="mcol"><div class="v num">'+v+'</div><div class="b" style="--h:'+Math.round(v/cmax*100)+'%;--c:'+shades[i]+'"></div><div class="m">'+MONTHS[i].short+'</div></div>';}).join("")+'</div></div>'+
+    '<div><div class="sub-h">Where they tapped · October</div><div class="hbars">'+CALLS.octWhere.map(function(w){return '<div class="hbar"><div class="meta"><span class="path" style="white-space:normal">'+w.name+'</span><span class="val num">'+w.count+'</span></div><div class="track"><div class="fill" style="--w:'+Math.round(w.count/wmax*100)+'%"></div></div></div>';}).join("")+'</div>'+
+    '<div class="note">Counts taps on the office number, 603-382-3182. A tap opens the phone’s dialer; it doesn’t prove the call connected.</div></div>'+
+  '</div>';
+
+  // key page hits by month
+  var kmax = Math.max.apply(null, KEY.map(function(k){return Math.max.apply(null,k.m);}));
+  $("keybars").innerHTML = '<div class="keylegend"><span><i style="background:var(--a1)"></i>Aug</span><span><i style="background:var(--a2)"></i>Sep</span><span><i style="background:var(--a3)"></i>Oct</span></div>'+
+    '<div class="kgroup">'+KEY.map(function(k){
+      return '<div class="krow"><div class="meta"><span>'+k.name+'</span><span class="up">▲ '+pct(k.m[0],k.m[2])+'% since Aug</span></div><div class="ktracks">'+
+        k.m.map(function(v,i){return '<div class="kt m'+(i+1)+'"><span>'+MONTHS[i].short+'</span><div class="track"><div class="fill" style="--w:'+Math.max(3,Math.round(v/kmax*100))+'%"></div></div><span class="n num">'+v+'</span></div>';}).join("")+
+        '</div></div>';
+    }).join("")+'</div>';
+
+  // key page donut for October
+  var kcolors = ["#f6b23d","#c98a2a","#ffd27a"];
+  var oct = KEY.map(function(k,i){return {name:k.name, count:k.m[2], color:kcolors[i]};});
+  var aug = sum(KEY.map(function(k){return k.m[0];})), sep = sum(KEY.map(function(k){return k.m[1];})), octT = sum(oct.map(function(d){return d.count;}));
+  $("keydonut").innerHTML = donut(oct, nf(octT), "hits") +
+    '<div class="note">All key pages together: '+aug+' in Aug → '+sep+' in Sep → '+octT+' in Oct. The “Request a quote” form is on every page, so its button clicks are counted together wherever they happen.</div>';
+})();
+</script>
+</body>
+</html>
