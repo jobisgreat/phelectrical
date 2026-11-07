@@ -347,7 +347,10 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
   body { padding-bottom: 76px; }
 }
 /* Redesign, 6 Nov 2026: a bid-document look. Rule lines and label columns instead of cards. */
-header h1 { font-size: clamp(34px, 4.2vw, 54px); max-width: 18ch; }
+header h1 { font-size: clamp(30px, 3.7vw, 50px); max-width: 20ch; line-height: 1.04; }
+header h1 span { display: block; } header h1 .l2 { color: #f5c04a; margin-top: .18em; }
+header .herobtns { margin-top: 22px; } header .herobtns .btn { color: #f5c04a; }
+@media (max-width: 600px) { header .cover img.shoplogo { width: 68%; margin-bottom: 18px; } }
 section[data-slide] h2, .findings h2 { font-size: clamp(28px, 3.6vw, 42px); max-width: 24ch; }
 .cover { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 header img.shoplogo { width: min(360px, 100%); margin: 0 0 22px; }
@@ -527,11 +530,11 @@ def proposal():
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PH Electric · Not a brochure. A website that brings in work.</title>
+  <title>PH Electric · You know what’s working on the job. Know what’s working on the site.</title>
   <meta name="description" content="The {gap_n} gaps we found on phelectricalcontractor.com, our fix for each, and our proposal.">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PH Electric · Not a brochure. A website that brings in work.">
+  <meta property="og:title" content="PH Electric · You know what’s working on the job. Know what’s working on the site.">
   <meta property="og:description" content="The {gap_n} gaps we found and how we fix each one. Your new website is built and ready to see.">
   <meta property="og:image" content="https://{PROPOSAL_HOST}/proposal/share.jpg">
   <meta property="og:image:width" content="1120">
@@ -555,9 +558,10 @@ def proposal():
           <img class="shoplogo" src="ph-electric-logo.jpg" alt="PH Electric logo, from the sign on your truck" width="1920" height="1050">
           <p class="forfirm">Website proposal for {html.escape(LEGAL_NAME)}</p>
           {forge}
-          <p class="tagline">Not a brochure. A website that brings in work.</p>
-          <h1>Turn the buyers who look you up into bid invitations.</h1>
-          <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com.</p>
+          <p class="tagline">You know what’s working on the job. Know what’s working on the site.</p>
+          <h1><span class="l1">From bid to closeout, you track the work.</span> <span class="l2">We track your visitors who become the next bid.</span></h1>
+          <p class="sub">Your new website is built and working now, made from the facts on phelectricalcontractor.com. It comes with a private owner dashboard, so you see who visits and what they look at.</p>
+          <div class="btns herobtns"><a class="btn outline" href="{SITE}/stats/sample/" data-site="/stats/sample/">See the example owner dashboard →</a></div>
         </div>
         <aside class="glance" aria-label="Proposal at a glance">
           <h2>At a glance</h2>
@@ -669,7 +673,7 @@ def proposal():
         </ul></div>
         <p class="proof"><b>The proof:</b> we save your Google numbers before the build and compare them at 30, 60 and 90 days after launch.</p>
         <div class="dash">
-          <p class="syshead dashhead">You track every job from bid to closeout. Now track your website the same way.</p>
+          <p class="syshead dashhead">Every visitor counted. Every page ranked. Every quote request logged.</p>
           <p class="lead">Your owner dashboard is a private page on your website that only you can open. It shows how many people visited, which pages they read, whether they used a phone or a computer, and how many reached your key pages (For contractors, Contact and the quote form). It updates every few minutes, with no reports to wait for.</p>
           <figure class="shot">
             <div class="frame"><a href="{SITE}/stats/sample/" data-site="/stats/sample/"><img src="owner-dashboard.jpg" alt="Example owner dashboard for PH Electrical with sample numbers" width="1440" height="892" loading="lazy"></a></div>
