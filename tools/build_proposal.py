@@ -273,6 +273,7 @@ dl.terms dt { font-weight: 700; } dl.terms dd { margin: 2px 0 0; color: var(--mu
 .proof { margin: 16px 0 0; max-width: 46rem; }
 .dash { margin-top: 34px; }
 .dash .lead { max-width: 46rem; }
+.dash .dashhead { color: #f5c04a; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.15; max-width: 30ch; border-left: 8px solid #f5c04a; padding: 4px 0 4px 18px; margin-bottom: 18px; }
 .seochart{margin-top:28px;background:var(--ink);color:var(--onink);border-top:4px solid var(--gold);padding:16px;}
 .seohead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
 .seotitle{font-family:var(--display);font-weight:800;font-size:23px;color:#f0b13c;margin:0}
@@ -668,7 +669,7 @@ def proposal():
         </ul></div>
         <p class="proof"><b>The proof:</b> we save your Google numbers before the build and compare them at 30, 60 and 90 days after launch.</p>
         <div class="dash">
-          <p class="syshead">You track every job from bid to closeout. Now track your website the same way.</p>
+          <p class="syshead dashhead">You track every job from bid to closeout. Now track your website the same way.</p>
           <p class="lead">Your owner dashboard is a private page on your website that only you can open. It shows how many people visited, which pages they read, whether they used a phone or a computer, and how many reached your key pages (For contractors, Contact and the quote form). It updates every few minutes, with no reports to wait for.</p>
           <figure class="shot">
             <div class="frame"><a href="{SITE}/stats/sample/" data-site="/stats/sample/"><img src="owner-dashboard.jpg" alt="Example owner dashboard for PH Electrical with sample numbers" width="1440" height="892" loading="lazy"></a></div>
