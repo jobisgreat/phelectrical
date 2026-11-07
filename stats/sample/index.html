@@ -153,10 +153,16 @@
   .phone-ico svg{width:17px; height:17px}
   .foot{margin-top:28px; color:var(--faint); font-size:12.5px; text-align:center; line-height:1.6}
   .foot b{color:var(--amber)}
+  .back{display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; padding:10px 16px; border:1px solid rgba(246,178,61,.55); border-radius:8px; color:var(--amber-bright); font-weight:600; font-size:15px; text-decoration:none}
+  .back:hover,.back:focus-visible{background:var(--amber-dim)}
 </style>
 </head>
 <body>
 <main class="wrap">
+  <a class="back" id="back" href="/">&larr; Back to the website</a>
+  <script>(function(){try{var q=new URLSearchParams(location.search),b=document.getElementById("back"),code=q.get("p");
+    if(q.get("from")==="proposal"){b.href="/proposal/"+(code?"?p="+encodeURIComponent(code):"")+"#seo";b.innerHTML="&larr; Back to your proposal";}
+    else if(code){b.href="/?p="+encodeURIComponent(code);}}catch(e){}})();</script>
   <div class="top">
     <div>
       <div class="eyebrow">Owner dashboard · example</div>
